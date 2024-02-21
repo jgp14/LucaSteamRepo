@@ -7,7 +7,17 @@ import excepciones.CsvException;
 import model.Juego;
 import util.CsvUtils;
 
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
+import excepciones.JuegoException;
+
+
 public class DAOJuegosImp implements DAOJuegos {
+
+	private static final Logger LOGGER = Logger.getLogger(DAOJuegosImp.class.getName());
 
 	private List<Juego> juegos;
 	private ListaEditor listaEditor;
@@ -68,4 +78,18 @@ public class DAOJuegosImp implements DAOJuegos {
 	}
 	
 
+    @Override
+    public void altaJuego(Juego juego) throws JuegoException {
+
+		if (juego != null) {
+			if (existeJuego(juego)) {
+				throw new JuegoException("No se puede dar de alta porque el juego ya existe");
+			} else {
+				juegos.add(juego);
+				LOGGER.log(Level.INFO, "Juego dado de alta " + juego.getNombre());
+			}
+		} else {
+			LOGGER.log(Level.WARNING, "Error dadndo de alta juego, estás intentado dar de alta un juego null");
+		}
+    }
 }
