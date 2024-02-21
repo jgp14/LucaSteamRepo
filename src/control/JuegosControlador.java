@@ -21,15 +21,6 @@ public class JuegosControlador {
 
 	JuegosServicioImpl servicio = new JuegosServicioImpl();
 
-	public void cargarDatos() {
-		try {
-			servicio.cargarDatos("vgsales.csv");
-		} catch (CsvException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
 	public void incio() {
 		boolean seguir = true;
 		do {
@@ -74,21 +65,37 @@ public class JuegosControlador {
 		boolean continuar = true;
 		switch (LeeDatos.leeInt()) {
 		case 1:
-			
-			String nombreFichero = "vgsales.csv";
-			try {
-				servicio.cargarDatos(nombreFichero);
-				//System.out.println(dao.getJuegos().toString());
-			} catch (CsvException e) {
-				e.printStackTrace();
-			}
+			cargarDatos();
 			break;
 
-		case 7:
+		case 2:
 			// ALTA DE UN JUEGO
-			altaJuego();
+			altaJuego();	
 			break;
+		case 3:
+			// LISTADO JUEGOS 
+			listarJuegos();
+			break;
+		case 4:
+			// LISTADO EDITORES 
 
+			break;
+		case 5:
+			// LISTADO JUEGOS FILTRADO POR GENERO PLATAFORMA 
+		
+			break;
+		case 6:
+			// LISTADO JUEGOS FILTRADO POR GENERO 
+
+			
+			break;
+		case 7:
+			// LISTADO JUEGOS DEL SIGLO XX
+			
+			break;
+		case 8:
+			
+			break;
 		case 0:
 			continuar = false;
 			break;
@@ -97,5 +104,21 @@ public class JuegosControlador {
 		return continuar;
 	}
 
+
+	public void cargarDatos() {
+		try {
+			servicio.cargarDatos("vgsales.csv");
+		} catch (CsvException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void listarJuegos() {
+		try {
+			servicio.listarJuegos();
+		}catch (JuegoException e) {
+			e.printStackTrace();
+		}
+	}
 
 }
