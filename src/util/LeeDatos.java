@@ -5,9 +5,14 @@ import java.util.Scanner;
 
 public class LeeDatos {
 
-	public static String leeString() {
+	public static String leerString() {
 		Scanner lector = new Scanner(System.in);
 		return lector.nextLine();
+	}
+
+	public static String leerString(String mensaje) {
+		System.out.println(mensaje);
+		return leerString();
 	}
 
 	public static int leerInt() throws InputMismatchException {

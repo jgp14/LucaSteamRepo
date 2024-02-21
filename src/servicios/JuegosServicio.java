@@ -8,13 +8,10 @@ import model.Juego;
 import model.TipoGenero;
 
 public interface JuegosServicio {
-	public void cargarDatos(String nombreFichero) throws CsvException;
 
-	public void altaJuego(Juego juego) throws JuegoException;
-
-	public List<Juego> listarJuegos() throws JuegoException;
-
-	public List<Juego> listarGeneroPorPlataforma() throws JuegoException;
-
-	public List<Juego> listarPorGenero(TipoGenero tipoGenero) throws JuegoException;
+	void cargarDatos(String nombreFichero) throws CsvException;
+	void altaJuego(Juego juego) throws JuegoException;
+	List<Juego> listarJuegos() throws JuegoException;
+	List<Juego> listarGeneroPorPlataforma() throws JuegoException;
+	List<Juego> listarPorGenero(TipoGenero tipoGenero) throws JuegoException;
 }

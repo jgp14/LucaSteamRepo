@@ -1,12 +1,9 @@
 package vista;
 
-import java.util.List;
-
-import model.Juego;
-
 public class Menu {
 
-	public static final void mostrarMenu() {
+	public static void mostrarMenu() {
+
 		System.out.println(" ");
 		System.out.println("ADMINISTRACION JUEGOS");
 		System.out.println(" ");

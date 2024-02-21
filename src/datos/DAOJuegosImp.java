@@ -3,26 +3,25 @@ package datos;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import excepciones.CsvException;
 import model.Juego;
 import model.TipoGenero;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import util.CsvUtils;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import excepciones.JuegoException;
 
 public class DAOJuegosImp implements DAOJuegos {
 
-	private static final Logger LOGGER = Logger.getLogger(DAOJuegosImp.class.getName());
+	private static final Logger LOGGER = LogManager.getLogger(DAOJuegosImp.class);
 
 	private List<Juego> juegos;
 	private ListaEditor listaEditor;
 	private ListaPlataforma listaPlataforma;
 
 	public DAOJuegosImp() {
-		super();
 		this.juegos = new ArrayList<>();
 		this.listaEditor = new ListaEditor();
 		this.listaPlataforma = new ListaPlataforma();
@@ -30,7 +29,9 @@ public class DAOJuegosImp implements DAOJuegos {
 
 	@Override
 	public boolean existeJuego(Juego juegoCompara) {
+
 		for (Juego juego : juegos) {
+
 			if (juego.equals(juegoCompara)) {
 				return true;
 			}
@@ -39,7 +40,7 @@ public class DAOJuegosImp implements DAOJuegos {
 	}
 
 	public DAOJuegosImp(List<Juego> juegos, ListaEditor listaEditor, ListaPlataforma listaPlataforma) {
-		super();
+
 		this.juegos = juegos;
 		this.listaEditor = listaEditor;
 		this.listaPlataforma = listaPlataforma;
@@ -71,15 +72,16 @@ public class DAOJuegosImp implements DAOJuegos {
 
 	@Override
 	public void cargarDatos(String nombreFichero) throws CsvException {
+
 		juegos = CsvUtils.deCsvAList(nombreFichero);
 
 		if (!juegos.isEmpty()) {
-			for (Juego juego : juegos) {
-				listaEditor.añadirEditor(juego.getEditor());
-				listaPlataforma.añadirPlataforma(juego.getPlataforma());
-			}
 
-			LOGGER.log(Level.INFO, "Juegos, Editores, Plataformas cargados correctamente");
+			for (Juego juego : juegos) {
+				listaEditor.anadirEditor(juego.getEditor());
+				listaPlataforma.anadirPlataforma(juego.getPlataforma());
+			}
+			LOGGER.info("Juegos, Editores, Plataformas cargados correctamente");
 		}
 	}
 
@@ -88,21 +90,24 @@ public class DAOJuegosImp implements DAOJuegos {
 
 		if (juego != null && juego.isJuegoValido()) {
 			if (existeJuego(juego)) {
-				LOGGER.log(Level.INFO, "Juego ya existe no se puede dar de alta");
+				LOGGER.warn("Juego ya existe no se puede dar de alta");
 				throw new JuegoException("No se puede dar de alta porque el juego ya existe");
 			} else {
 				juegos.add(juego);
-				LOGGER.log(Level.INFO, "Juego dado de alta " + juego.getNombre());
+				LOGGER.info("Juego dado de alta " + juego.getNombre());
 			}
 		} else {
-			LOGGER.log(Level.WARNING, "Error dadndo de alta juego, estás intentado dar de alta un juego incorrecto");
+			LOGGER.warn("Error dadndo de alta juego, estás intentado dar de alta un juego incorrecto");
 			throw new JuegoException("Intentado dar de alta un jeugo incorrecto");
 		}
 	}
 
 	public List<Juego> listarPorGeneros(TipoGenero tipoGenero) throws JuegoException {
-		List<Juego> juegosPorGenero = new ArrayList<Juego>();
+
+		List<Juego> juegosPorGenero = new ArrayList<>();
+
 		for (int i = 0; i < juegos.size(); i++) {
+
 			if (tipoGenero == juegos.get(i).getTipoGenero()) {
 				juegosPorGenero.add(juegos.get(i));
 			}
@@ -117,13 +122,15 @@ public class DAOJuegosImp implements DAOJuegos {
 
 	@Override
 	public List<Juego> listarJuegos() throws JuegoException {
+
 		List<Juego> juegos = getJuegos();
 		juegos = getJuegos();
+
 		if (juegos != null && !juegos.isEmpty()) {
 			return juegos;
 		} else {
 			String msg = "Lista de juegos es  vacia";
-			LOGGER.log(Level.WARNING, msg);
+			LOGGER.warn(msg);
 			throw new JuegoException(msg);
 		}
 	}
