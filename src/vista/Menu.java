@@ -1,5 +1,9 @@
 package vista;
 
+import java.util.List;
+
+import model.Juego;
+
 public class Menu {
 
 	public static final void mostrarMenu() {
@@ -20,4 +24,6 @@ public class Menu {
 		System.out.println("0-Finalizar sesion.");
 		System.out.println("Gestion:");
 	}
+	
+
 }

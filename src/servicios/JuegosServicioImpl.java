@@ -32,18 +32,15 @@ public class JuegosServicioImpl implements JuegosServicio {
 	}
 
 	@Override
-	public void listarJuegos() throws JuegoException {
+	public List<Juego> listarJuegos() throws JuegoException {
 		List<Juego> juegos = datos.getJuegos();
-		if(juegos != null && juegos.isEmpty()) {
-			for(Juego juego: juegos) {
-				System.out.println(juego.toString());
-			}
+		if(juegos != null && !juegos.isEmpty()) {
+			return juegos;
 		} else {
 			String msg = "Lista de juegos es nula o vacia";
 			LOGGER.log(Level.WARNING, msg);
 			throw new JuegoException(msg);
-		}
-		
+		}	
 	}
 
 }

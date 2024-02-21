@@ -9,6 +9,7 @@ import util.LeeDatos;
 import datos.DAOJuegosImp;
 import vista.Menu;
 
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -112,9 +113,13 @@ public class JuegosControlador {
 	
 	public void listarJuegos() {
 		try {
-			servicio.listarJuegos();
+			mostrarLista(servicio.listarJuegos());
 		}catch (JuegoException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static void mostrarLista(List<Juego> juegos) {
+		juegos.forEach(System.out::println);
 	}
 }
