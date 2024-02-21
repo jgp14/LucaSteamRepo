@@ -96,6 +96,10 @@ public class Juego {
 				&& Objects.equals(plataforma, other.plataforma) && ranking == other.ranking
 				&& Objects.equals(tipoGenero, other.tipoGenero);
 	}
+
+	public boolean isJuegoValido() {
+		return ranking != 0 && nombre != null && plataforma != null && fecha != 0 && tipoGenero != null && editor != null;
+	}
 	
 	
 	

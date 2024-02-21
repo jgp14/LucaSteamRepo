@@ -9,7 +9,13 @@ import util.LeeDatos;
 import datos.DAOJuegosImp;
 import vista.Menu;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class JuegosControlador {
+
+	private static final Logger LOGGER = Logger.getLogger(JuegosControlador.class.getName());
+
 
 	JuegosServicioImpl servicio = new JuegosServicioImpl();
 
@@ -57,7 +63,7 @@ public class JuegosControlador {
 
 			servicio.altaJuego(juego);
 		} catch (JuegoException e) {
-			System.out.println("error");
+			LOGGER.log(Level.SEVERE, "Error en el controlador" , e);
 		}
 	}
 

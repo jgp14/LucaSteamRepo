@@ -9,8 +9,13 @@ public class JuegosServicioImpl implements JuegosServicio {
 	DAOJuegosImp datos = new DAOJuegosImp();
 	@Override
 	public void cargarDatos(String nombreFichero) throws CsvException {
-		datos.cargarDatos(nombreFichero);
-		//System.out.println("Prueba");
+
+		if (nombreFichero != null) {
+			datos.cargarDatos(nombreFichero);
+			//System.out.println("Prueba");
+		} else {
+			throw new CsvException("Fichero con valor null");
+		}
 	}
 	
 	public void altaJuego(Juego juego) throws JuegoException {

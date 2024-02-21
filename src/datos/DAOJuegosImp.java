@@ -72,21 +72,24 @@ public class DAOJuegosImp implements DAOJuegos {
 	public void cargarDatos(String nombreFichero) throws CsvException {
 		juegos = CsvUtils.deCsvAList(nombreFichero);
 		System.out.println(juegos.size());
+		System.out.println(juegos.get(0));
 
 	}
 
 	@Override
 	public void altaJuego(Juego juego) throws JuegoException {
 
-		if (juego != null) {
+		if (juego != null && juego.isJuegoValido()) {
 			if (existeJuego(juego)) {
+				LOGGER.log(Level.INFO, "Juego ya existe no se puede dar de alta");
 				throw new JuegoException("No se puede dar de alta porque el juego ya existe");
 			} else {
 				juegos.add(juego);
 				LOGGER.log(Level.INFO, "Juego dado de alta " + juego.getNombre());
 			}
 		} else {
-			LOGGER.log(Level.WARNING, "Error dadndo de alta juego, estás intentado dar de alta un juego null");
+			LOGGER.log(Level.WARNING, "Error dadndo de alta juego, estás intentado dar de alta un juego incorrecto");
+			throw new JuegoException("Intentado dar de alta un jeugo incorrecto");
 		}
 	}
 }
