@@ -7,7 +7,7 @@ public class JuegosServicioImpl implements JuegosServicio {
 	@Override
 	public void cargarDatos(String nombreFichero) {
 		//datos.cargarDatos("nombrefichero.txt");
-		
+		System.out.println("Prueba");
 	}
 
 }
