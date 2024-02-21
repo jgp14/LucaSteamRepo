@@ -8,14 +8,14 @@ public class Juego {
 	private String nombre;
 	private String plataforma;
 	private int fecha;
-	private String tipoGenero;
+	private TipoGenero tipoGenero;
 	private String editor;
 	
 	public Juego () {
 		
 	}
 	
-	public Juego(int ranking, String nombre, String plataforma, int fecha, String tipoGenero, String editor) {
+	public Juego(int ranking, String nombre, String plataforma, int fecha, TipoGenero tipoGenero, String editor) {
         this.ranking = ranking;
         this.nombre = nombre;
         this.plataforma = plataforma;
@@ -56,11 +56,11 @@ public class Juego {
 		this.fecha = fecha;
 	}
 
-	public String getTipoGenero() {
+	public TipoGenero getTipoGenero() {
 		return tipoGenero;
 	}
 
-	public void setTipoGenero(String tipoGenero) {
+	public void setTipoGenero(TipoGenero tipoGenero) {
 		this.tipoGenero = tipoGenero;
 	}
 
