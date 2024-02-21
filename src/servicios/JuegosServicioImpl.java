@@ -34,14 +34,7 @@ public class JuegosServicioImpl implements JuegosServicio {
 
 	@Override
 	public List<Juego> listarJuegos() throws JuegoException {
-		List<Juego> juegos = datos.getJuegos();
-		if(juegos != null && !juegos.isEmpty()) {
-			return juegos;
-		} else {
-			String msg = "Lista de juegos es nula o vacia";
-			LOGGER.log(Level.WARNING, msg);
-			throw new JuegoException(msg);	
-		}
+		return datos.listarJuegos();
 	}
 
 	public List<Juego> listarGeneroPorPlataforma() throws JuegoException {

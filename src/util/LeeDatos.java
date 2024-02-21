@@ -14,10 +14,10 @@ public class LeeDatos {
 	}
 
 	
-	public static int leerInt() {
+	public static int leerInt() throws Exception{
 		return new Scanner(System.in).nextInt();
 	}
-	public static int leerInt(String mensaje) {
+	public static int leerInt(String mensaje) throws Exception{
 		System.out.println(mensaje);
 		return leerInt();
 	}

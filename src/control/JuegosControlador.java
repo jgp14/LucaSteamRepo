@@ -12,7 +12,6 @@ import util.LeeDatos;
 import vista.Menu;
 
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class JuegosControlador {
@@ -36,12 +35,12 @@ public class JuegosControlador {
 				salirGeneral = true;
 			}catch(Exception e) {
 				System.err.println("error");
+				System.err.println(e);
 			}
 		}
 	}
 
-	public void altaJuego() {
-		try {
+	public void altaJuego() throws JuegoException{
 			Juego juego = new Juego();
 			System.out.println("Introduce ranking");
 			int ranking = LeeDatos.leeInt();
@@ -63,11 +62,7 @@ public class JuegosControlador {
 			juego.setFecha(añoFecha);
 			juego.setTipoGenero(tipoGenero);
 			juego.setEditor(editor);
-
 			servicio.altaJuego(juego);
-		} catch (JuegoException e) {
-			LOGGER.log(Level.SEVERE, "Error en el controlador" , e);
-		}
 	}
 
 	public boolean seleccionOpciones() throws JuegoException {
