@@ -9,6 +9,7 @@ import datos.DAOJuegosImp;
 import excepciones.CsvException;
 import excepciones.JuegoException;
 import model.Juego;
+import model.TipoGenero;
 import util.CsvUtils;
 
 public class JuegosServicioImpl implements JuegosServicio {
@@ -16,6 +17,7 @@ public class JuegosServicioImpl implements JuegosServicio {
 	private static final Logger LOGGER = Logger.getLogger(JuegosServicioImpl.class.getName());
 
 	DAOJuegosImp datos = new DAOJuegosImp();
+
 	@Override
 	public void cargarDatos(String nombreFichero) throws CsvException {
 
@@ -35,14 +37,17 @@ public class JuegosServicioImpl implements JuegosServicio {
 	@Override
 	public void listarJuegos() throws JuegoException {
 		List<Juego> juegos = datos.getJuegos();
-		if(juegos != null && juegos.isEmpty()) {
-			for(Juego juego: juegos) {
+		if (juegos != null && !juegos.isEmpty()) {
+			for (Juego juego : juegos) {
 				System.out.println(juego.toString());
 			}
 		} else {
 			String msg = "Lista de juegos es nula o vacia";
 			LOGGER.log(Level.WARNING, msg);
 			throw new JuegoException(msg);
+		}
+	}
+
 	public List<Juego> listarGeneroPorPlataforma() throws JuegoException {
 		return listarPorGenero(TipoGenero.PLATFORM);
 	}

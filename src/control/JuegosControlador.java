@@ -82,9 +82,14 @@ public class JuegosControlador {
 
 			break;
 		case 5:
-			// LISTADO JUEGOS FILTRADO POR GENERO PLATAFORMA 
-		
-			break;
+			// LISTADO JUEGOS FILTRADO POR GENERO PLATAFORMA
+            try {
+                servicio.listarGeneroPorPlataforma().forEach(System.out::println);
+            } catch (JuegoException e) {
+                throw new RuntimeException(e);
+            }
+
+            break;
 		case 6:
 			// LISTADO JUEGOS FILTRADO POR GENERO 
 

@@ -72,9 +72,6 @@ public class DAOJuegosImp implements DAOJuegos {
 	@Override
 	public void cargarDatos(String nombreFichero) throws CsvException {
 		juegos = CsvUtils.deCsvAList(nombreFichero);
-		System.out.println(juegos.size());
-		System.out.println(juegos.get(0));
-
 	}
 
 	@Override

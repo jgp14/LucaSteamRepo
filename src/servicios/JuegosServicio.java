@@ -3,6 +3,9 @@ package servicios;
 import excepciones.CsvException;
 import excepciones.JuegoException;
 import model.Juego;
+import model.TipoGenero;
+
+import java.util.List;
 
 public interface JuegosServicio {
 	public void cargarDatos(String nombreFichero) throws CsvException;
