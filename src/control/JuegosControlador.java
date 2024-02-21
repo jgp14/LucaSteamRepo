@@ -1,12 +1,14 @@
 package control;
 
 import excepciones.CsvException;
+
 import excepciones.JuegoException;
 import model.Juego;
 import model.TipoGenero;
+import servicios.JuegosServicio;
 import servicios.JuegosServicioImpl;
 import util.LeeDatos;
-import datos.DAOJuegosImp;
+
 import vista.Menu;
 
 import java.util.List;
@@ -18,7 +20,7 @@ public class JuegosControlador {
 	private static final Logger LOGGER = Logger.getLogger(JuegosControlador.class.getName());
 
 
-	JuegosServicioImpl servicio = new JuegosServicioImpl();
+	JuegosServicio servicio = new JuegosServicioImpl();
 
 	public void incio() {
 		boolean seguir = true;
@@ -80,9 +82,14 @@ public class JuegosControlador {
 
 			break;
 		case 5:
-			// LISTADO JUEGOS FILTRADO POR GENERO PLATAFORMA 
-		
-			break;
+			// LISTADO JUEGOS FILTRADO POR GENERO PLATAFORMA
+            try {
+                servicio.listarGeneroPorPlataforma().forEach(System.out::println);
+            } catch (JuegoException e) {
+                throw new RuntimeException(e);
+            }
+
+            break;
 		case 6:
 			// LISTADO JUEGOS FILTRADO POR GENERO 
 
@@ -103,6 +110,7 @@ public class JuegosControlador {
 		return continuar;
 	}
 
+
 	public void cargarDatos() {
 		try {
 			servicio.cargarDatos("vgsales.csv");
@@ -122,4 +130,5 @@ public class JuegosControlador {
 	public static void mostrarLista(List<Juego> juegos) {
 		juegos.forEach(System.out::println);
 	}
+  
 }
