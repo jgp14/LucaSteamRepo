@@ -4,6 +4,7 @@ import excepciones.CsvException;
 import excepciones.JuegoException;
 import model.Juego;
 import model.TipoGenero;
+import servicios.JuegosServicio;
 import servicios.JuegosServicioImpl;
 import util.LeeDatos;
 import datos.DAOJuegosImp;
@@ -17,7 +18,7 @@ public class JuegosControlador {
 	private static final Logger LOGGER = Logger.getLogger(JuegosControlador.class.getName());
 
 
-	JuegosServicioImpl servicio = new JuegosServicioImpl();
+	JuegosServicio servicio = new JuegosServicioImpl();
 
 	public void cargarDatos() {
 		try {
