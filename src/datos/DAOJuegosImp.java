@@ -72,6 +72,13 @@ public class DAOJuegosImp implements DAOJuegos {
 	@Override
 	public void cargarDatos(String nombreFichero) throws CsvException {
 		juegos = CsvUtils.deCsvAList(nombreFichero);
+
+		if (!juegos.isEmpty()) {
+			for (Juego juego : juegos) {
+				listaEditor.añadirEditor(juego.getEditor());
+				listaPlataforma.añadirPlataforma(juego.getPlataforma());
+			}
+		}
 	}
 
 	@Override
