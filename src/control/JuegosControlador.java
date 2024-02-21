@@ -23,12 +23,21 @@ public class JuegosControlador {
 	JuegosServicio servicio = new JuegosServicioImpl();
 
 	public void incio() {
-		boolean seguir = true;
-		do {
-			Menu.mostrarMenu();
-			seguir = this.seleccionOpciones();
-		} while (seguir);
-		System.out.println("   --- Fin de la sesion ---");
+		boolean salirGeneral = false;
+		
+		while(!salirGeneral) {
+			try {
+				boolean seguir = true;
+				do {
+					Menu.mostrarMenu();
+					seguir = this.seleccionOpciones();
+				} while (seguir);
+				System.out.println("   --- Fin de la sesion ---");
+				salirGeneral = true;
+			}catch(Exception e) {
+				System.err.println("error");
+			}
+		}
 	}
 
 	public void altaJuego() {
@@ -61,21 +70,19 @@ public class JuegosControlador {
 		}
 	}
 
-	public boolean seleccionOpciones() {
-
+	public boolean seleccionOpciones() throws JuegoException {
 		boolean continuar = true;
 		switch (LeeDatos.leeInt()) {
 		case 1:
-			cargarDatos();
+			servicio.cargarDatos("vgsales.csv");
 			break;
-
 		case 2:
 			// ALTA DE UN JUEGO
 			altaJuego();	
 			break;
 		case 3:
 			// LISTADO JUEGOS 
-			listarJuegos();
+			mostrarLista(servicio.listarJuegos());
 			break;
 		case 4:
 			// LISTADO EDITORES 
@@ -83,21 +90,11 @@ public class JuegosControlador {
 			break;
 		case 5:
 			// LISTADO JUEGOS FILTRADO POR GENERO PLATAFORMA
-            try {
-                servicio.listarGeneroPorPlataforma().forEach(System.out::println);
-            } catch (JuegoException e) {
-                throw new RuntimeException(e);
-            }
-
+			mostrarLista(servicio.listarGeneroPorPlataforma());
             break;
 		case 6:
 			// LISTADO JUEGOS FILTRADO POR GENERO 
 
-			
-			break;
-		case 7:
-			// LISTADO JUEGOS DEL SIGLO XX
-			
 			break;
 		case 8:
 			
@@ -108,23 +105,6 @@ public class JuegosControlador {
 		}
 
 		return continuar;
-	}
-
-
-	public void cargarDatos() {
-		try {
-			servicio.cargarDatos("vgsales.csv");
-		} catch (CsvException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void listarJuegos() {
-		try {
-			mostrarLista(servicio.listarJuegos());
-		}catch (JuegoException e) {
-			e.printStackTrace();
-		}
 	}
 	
 	public static void mostrarLista(List<Juego> juegos) {
