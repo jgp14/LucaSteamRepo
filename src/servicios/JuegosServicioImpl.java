@@ -1,9 +1,15 @@
 package servicios;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import datos.DAOJuegosImp;
 import excepciones.CsvException;
 import excepciones.JuegoException;
 import model.Juego;
+import util.CsvUtils;
 
 public class JuegosServicioImpl implements JuegosServicio {
 
@@ -27,6 +33,16 @@ public class JuegosServicioImpl implements JuegosServicio {
 	}
 
 	@Override
+	public void listarJuegos() throws JuegoException {
+		List<Juego> juegos = datos.getJuegos();
+		if(juegos != null && juegos.isEmpty()) {
+			for(Juego juego: juegos) {
+				System.out.println(juego.toString());
+			}
+		} else {
+			String msg = "Lista de juegos es nula o vacia";
+			LOGGER.log(Level.WARNING, msg);
+			throw new JuegoException(msg);
 	public List<Juego> listarGeneroPorPlataforma() throws JuegoException {
 		return listarPorGenero(TipoGenero.PLATFORM);
 	}
@@ -39,6 +55,7 @@ public class JuegosServicioImpl implements JuegosServicio {
 			LOGGER.log(Level.WARNING, "Tipo de genero es listar por genero es null");
 			throw new JuegoException("Tipo de genero en listar por genero es null");
 		}
+
 	}
 
 }
