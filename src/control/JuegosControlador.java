@@ -6,13 +6,12 @@ import model.Juego;
 import model.TipoGenero;
 import servicios.JuegosServicioImpl;
 import util.LeeDatos;
+import datos.DAOJuegosImp;
+import vista.Menu;
 
 public class JuegosControlador {
-	JuegosServicioImpl servicio = new JuegosServicioImpl();
 
-	public void incio() {
-		altaJuego();
-	}
+	JuegosServicioImpl servicio = new JuegosServicioImpl();
 
 	public void cargarDatos() {
 		try {
@@ -21,6 +20,15 @@ public class JuegosControlador {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public void incio() {
+		boolean seguir = true;
+		do {
+			Menu.mostrarMenu();
+			seguir = this.seleccionOpciones();
+		} while (seguir);
+		System.out.println("   --- Fin de la sesion ---");
 	}
 
 	public void altaJuego() {
@@ -33,21 +41,52 @@ public class JuegosControlador {
 			System.out.println("Introduce la plataforma");
 			String plataforma = LeeDatos.leeString();
 			System.out.println("Intoduce fecha");
+
 			int añoFecha = LeeDatos.leeInt();
 			System.out.println("Introduce tipo genero");
 			TipoGenero tipoGenero = TipoGenero.valueOf(LeeDatos.leeString());
 			System.out.println("Introduce el editor");
 			String editor = LeeDatos.leeString();
+
 			juego.setRanking(ranking);
 			juego.setNombre(nombre);
 			juego.setPlataforma(plataforma);
 			juego.setFecha(añoFecha);
 			juego.setTipoGenero(tipoGenero);
 			juego.setEditor(editor);
+
 			servicio.altaJuego(juego);
 		} catch (JuegoException e) {
 			System.out.println("error");
 		}
+	}
+
+	public boolean seleccionOpciones() {
+
+		boolean continuar = true;
+		switch (LeeDatos.leeInt()) {
+		case 1:
+			
+			String nombreFichero = "vgsales.csv";
+			try {
+				servicio.cargarDatos(nombreFichero);
+				//System.out.println(dao.getJuegos().toString());
+			} catch (CsvException e) {
+				e.printStackTrace();
+			}
+			break;
+
+		case 7:
+			// ALTA DE UN JUEGO
+			altaJuego();
+			break;
+
+		case 0:
+			continuar = false;
+			break;
+		}
+
+		return continuar;
 	}
 
 }
