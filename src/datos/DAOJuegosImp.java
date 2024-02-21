@@ -117,12 +117,12 @@ public class DAOJuegosImp implements DAOJuegos {
 	public List<Juego> listarJuegos() throws JuegoException {
 		List<Juego> juegos = getJuegos();
 		juegos = getJuegos();
-		if(juegos != null && !juegos.isEmpty()) {
+		if (juegos != null && !juegos.isEmpty()) {
 			return juegos;
 		} else {
 			String msg = "Lista de juegos es  vacia";
 			LOGGER.log(Level.WARNING, msg);
-			throw new JuegoException(msg);	
+			throw new JuegoException(msg);
 		}
 	}
 }

@@ -10,28 +10,27 @@ import java.util.logging.*;
  */
 public class LoggerConfig {
 
-    public static void configureLogger(Logger logger) {
+	public static void configureLogger(Logger logger) {
 
-        try {
-            FileHandler fileHandler = new FileHandler("AvanzadoEmpleadosRubenGV.log", true);
-            ConsoleHandler consoleHandler = new ConsoleHandler();
-            SimpleFormatter simpleFormatter = new SimpleFormatter();
+		try {
+			FileHandler fileHandler = new FileHandler("AvanzadoEmpleadosRubenGV.log", true);
+			ConsoleHandler consoleHandler = new ConsoleHandler();
+			SimpleFormatter simpleFormatter = new SimpleFormatter();
 
-            fileHandler.setFormatter(simpleFormatter);
-            consoleHandler.setFormatter(simpleFormatter);
+			fileHandler.setFormatter(simpleFormatter);
+			consoleHandler.setFormatter(simpleFormatter);
 
-            // Desactivar la propagación a los loggers superiores
-            logger.setUseParentHandlers(false);
+			// Desactivar la propagación a los loggers superiores
+			logger.setUseParentHandlers(false);
 
-            logger.addHandler(fileHandler);
-            logger.addHandler(consoleHandler);
+			logger.addHandler(fileHandler);
+			logger.addHandler(consoleHandler);
 
-            logger.setLevel(Level.ALL);
-            consoleHandler.setLevel(Level.ALL);
-            fileHandler.setLevel(Level.ALL);
-        } catch (Exception e) {
-            System.err.println("Error al configurar el logger");
-        }
-    }
+			logger.setLevel(Level.ALL);
+			consoleHandler.setLevel(Level.ALL);
+			fileHandler.setLevel(Level.ALL);
+		} catch (Exception e) {
+			System.err.println("Error al configurar el logger");
+		}
+	}
 }
-
