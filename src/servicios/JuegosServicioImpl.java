@@ -2,14 +2,19 @@ package servicios;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import datos.DAOJuegosImp;
 import excepciones.CsvException;
 import excepciones.JuegoException;
 import model.Juego;
+import util.CsvUtils;
 
 public class JuegosServicioImpl implements JuegosServicio {
 	DAOJuegosImp datos = new DAOJuegosImp();
+    private static final Logger LOGGER = Logger.getLogger(CsvUtils.class.getName());
+
 	@Override
 	public void cargarDatos(String nombreFichero) throws CsvException {
 
@@ -29,9 +34,16 @@ public class JuegosServicioImpl implements JuegosServicio {
 	@Override
 	public void listarJuegos() throws JuegoException {
 		List<Juego> juegos = datos.getJuegos();
-		for(Juego juego: juegos) {
-			System.out.println(juego.toString());
+		if(juegos != null && juegos.isEmpty()) {
+			for(Juego juego: juegos) {
+				System.out.println(juego.toString());
+			}
+		} else {
+			String msg = "Lista de juegos es nula o vacia";
+			LOGGER.log(Level.WARNING, msg);
+			throw new JuegoException(msg);
 		}
+		
 	}
 
 }
