@@ -3,26 +3,26 @@ package model;
 import java.util.Objects;
 
 public class Juego {
-	
+
 	private int ranking;
 	private String nombre;
 	private String plataforma;
 	private int fecha;
 	private TipoGenero tipoGenero;
 	private String editor;
-	
-	public Juego () {
-		
+
+	public Juego() {
+
 	}
-	
+
 	public Juego(int ranking, String nombre, String plataforma, int fecha, TipoGenero tipoGenero, String editor) {
-        this.ranking = ranking;
-        this.nombre = nombre;
-        this.plataforma = plataforma;
-        this.fecha = fecha;
-        this.tipoGenero = tipoGenero;
-        this.editor = editor;
-    }
+		this.ranking = ranking;
+		this.nombre = nombre;
+		this.plataforma = plataforma;
+		this.fecha = fecha;
+		this.tipoGenero = tipoGenero;
+		this.editor = editor;
+	}
 
 	public int getRanking() {
 		return ranking;
@@ -98,9 +98,8 @@ public class Juego {
 	}
 
 	public boolean isJuegoValido() {
-		return ranking != 0 && nombre != null && plataforma != null && fecha != 0 && tipoGenero != null && editor != null;
+		return ranking != 0 && nombre != null && plataforma != null && fecha != 0 && tipoGenero != null
+				&& editor != null;
 	}
-	
-	
-	
+
 }

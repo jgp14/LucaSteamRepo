@@ -22,7 +22,6 @@ public class JuegosControlador {
 	JuegosServicio servicio = new JuegosServicioImpl();
 
 	public void incio() {
-
 		boolean salirGeneral = false;
 
 		while (!salirGeneral) {
@@ -33,51 +32,44 @@ public class JuegosControlador {
 					seguir = this.seleccionOpciones();
 				} while (seguir);
 				System.out.println("   --- Fin de la sesion ---");
-
 				salirGeneral = true;
 			} catch (Exception e) {
 				System.err.println("error");
+				System.err.println(e);
 			}
 		}
-
 	}
 
-	public void altaJuego() {
-		try {
-			Juego juego = new Juego();
-			System.out.println("Introduce ranking");
-			int ranking = LeeDatos.leeInt();
-			System.out.println("Intrdoduce el nombre");
-			String nombre = LeeDatos.leeString();
-			System.out.println("Introduce la plataforma");
-			String plataforma = LeeDatos.leeString();
-			System.out.println("Intoduce fecha");
+	public void altaJuego() throws JuegoException {
+		Juego juego = new Juego();
+		System.out.println("Introduce ranking");
+		int ranking = LeeDatos.leeInt();
+		System.out.println("Intrdoduce el nombre");
+		String nombre = LeeDatos.leeString();
+		System.out.println("Introduce la plataforma");
+		String plataforma = LeeDatos.leeString();
+		System.out.println("Intoduce fecha");
 
-			int añoFecha = LeeDatos.leeInt();
-			System.out.println("Introduce tipo genero");
-			TipoGenero tipoGenero = TipoGenero.valueOf(LeeDatos.leeString());
-			System.out.println("Introduce el editor");
-			String editor = LeeDatos.leeString();
+		int añoFecha = LeeDatos.leeInt();
+		System.out.println("Introduce tipo genero");
+		TipoGenero tipoGenero = TipoGenero.valueOf(LeeDatos.leeString());
+		System.out.println("Introduce el editor");
+		String editor = LeeDatos.leeString();
 
-			juego.setRanking(ranking);
-			juego.setNombre(nombre);
-			juego.setPlataforma(plataforma);
-			juego.setFecha(añoFecha);
-			juego.setTipoGenero(tipoGenero);
-			juego.setEditor(editor);
-
-			servicio.altaJuego(juego);
-		} catch (JuegoException e) {
-			LOGGER.log(Level.SEVERE, "Error en el controlador" , e);
-		}
+		juego.setRanking(ranking);
+		juego.setNombre(nombre);
+		juego.setPlataforma(plataforma);
+		juego.setFecha(añoFecha);
+		juego.setTipoGenero(tipoGenero);
+		juego.setEditor(editor);
+		servicio.altaJuego(juego);
 	}
 
-	public boolean seleccionOpciones() {
-
+	public boolean seleccionOpciones() throws JuegoException {
 		boolean continuar = true;
 		switch (LeeDatos.leeInt()) {
 		case 1:
-			cargarDatos();
+			servicio.cargarDatos("vgsales.csv");
 			break;
 
 		case 2:
@@ -85,8 +77,8 @@ public class JuegosControlador {
 			altaJuego();	
 			break;
 		case 3:
-			// LISTADO JUEGOS 
-			listarJuegos();
+			// LISTADO JUEGOS
+			mostrarLista(servicio.listarJuegos());
 			break;
 		case 4:
 			// LISTADO EDITORES 
@@ -94,24 +86,14 @@ public class JuegosControlador {
 			break;
 		case 5:
 			// LISTADO JUEGOS FILTRADO POR GENERO PLATAFORMA
-            try {
-                servicio.listarGeneroPorPlataforma().forEach(System.out::println);
-            } catch (JuegoException e) {
-                throw new RuntimeException(e);
-            }
-
-            break;
-		case 6:
-			// LISTADO JUEGOS FILTRADO POR GENERO 
-
-			
+			mostrarLista(servicio.listarGeneroPorPlataforma());
 			break;
-		case 7:
-			// LISTADO JUEGOS DEL SIGLO XX
-			
+		case 6:
+			// LISTADO JUEGOS FILTRADO POR GENERO
+
 			break;
 		case 8:
-			
+
 			break;
 		case 0:
 			continuar = false;
@@ -121,21 +103,8 @@ public class JuegosControlador {
 		return continuar;
 	}
 
-
-	public void cargarDatos() {
-		try {
-			servicio.cargarDatos("vgsales.csv");
-		} catch (CsvException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void listarJuegos() {
-		try {
-			servicio.listarJuegos();
-		}catch (JuegoException e) {
-			e.printStackTrace();
-		}
+	public static void mostrarLista(List<Juego> juegos) {
+		juegos.forEach(System.out::println);
 	}
 
 }

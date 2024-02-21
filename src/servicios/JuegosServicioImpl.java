@@ -21,29 +21,20 @@ public class JuegosServicioImpl implements JuegosServicio {
 
 		if (nombreFichero != null) {
 			datos.cargarDatos(nombreFichero);
-			//System.out.println("Prueba");
+			// System.out.println("Prueba");
 		} else {
 			throw new CsvException("Fichero con valor null");
 		}
 	}
-	
+
 	@Override
 	public void altaJuego(Juego juego) throws JuegoException {
-		datos.altaJuego(juego) ;
+		datos.altaJuego(juego);
 	}
 
 	@Override
-	public void listarJuegos() throws JuegoException {
-		List<Juego> juegos = datos.getJuegos();
-		if (juegos != null && !juegos.isEmpty()) {
-			for (Juego juego : juegos) {
-				System.out.println(juego.toString());
-			}
-		} else {
-			String msg = "Lista de juegos es nula o vacia";
-			LOGGER.log(Level.WARNING, msg);
-			throw new JuegoException(msg);
-		}
+	public List<Juego> listarJuegos() throws JuegoException {
+		return datos.listarJuegos();
 	}
 
 	public List<Juego> listarGeneroPorPlataforma() throws JuegoException {
@@ -58,7 +49,6 @@ public class JuegosServicioImpl implements JuegosServicio {
 			LOGGER.log(Level.WARNING, "Tipo de genero es listar por genero es null");
 			throw new JuegoException("Tipo de genero en listar por genero es null");
 		}
-
 	}
 
 }

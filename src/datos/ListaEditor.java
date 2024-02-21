@@ -8,5 +8,6 @@ public class ListaEditor {
 
 	public void añadirEditor(String nombreEditor) {
 		editores.add(nombreEditor);
+
 	}
 }
