@@ -1,7 +1,9 @@
 package datos;
 
-import servicios.JuegosServicioImpl;
+import excepciones.CsvException;
 
 public interface DAOJuegos {
 
+	
+	public void cargarDatos(String nombreFichero) throws CsvException;
 }
