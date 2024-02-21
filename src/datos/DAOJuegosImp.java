@@ -5,9 +5,17 @@ import java.util.List;
 
 import excepciones.CsvException;
 import model.Juego;
+import model.TipoGenero;
 import util.CsvUtils;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import excepciones.JuegoException;
+
 public class DAOJuegosImp implements DAOJuegos {
+
+	private static final Logger LOGGER = Logger.getLogger(DAOJuegosImp.class.getName());
 
 	private List<Juego> juegos;
 	private ListaEditor listaEditor;
@@ -19,6 +27,7 @@ public class DAOJuegosImp implements DAOJuegos {
 		this.listaEditor = new ListaEditor();
 		this.listaPlataforma = new ListaPlataforma();
 	}
+
 	@Override
 	public boolean existeJuego(Juego juegoCompara) {
 		for (Juego juego : juegos) {
@@ -28,6 +37,7 @@ public class DAOJuegosImp implements DAOJuegos {
 		}
 		return false;
 	}
+
 	public DAOJuegosImp(List<Juego> juegos, ListaEditor listaEditor, ListaPlataforma listaPlataforma) {
 		super();
 		this.juegos = juegos;
@@ -42,8 +52,6 @@ public class DAOJuegosImp implements DAOJuegos {
 	public void setJuegos(List<Juego> juegos) {
 		this.juegos = juegos;
 	}
-	
-	
 
 	public ListaEditor getListaEditor() {
 		return listaEditor;
@@ -64,8 +72,40 @@ public class DAOJuegosImp implements DAOJuegos {
 	@Override
 	public void cargarDatos(String nombreFichero) throws CsvException {
 		juegos = CsvUtils.deCsvAList(nombreFichero);
+		System.out.println(juegos.size());
+		System.out.println(juegos.get(0));
 
 	}
-	
 
+	@Override
+	public void altaJuego(Juego juego) throws JuegoException {
+
+		if (juego != null && juego.isJuegoValido()) {
+			if (existeJuego(juego)) {
+				LOGGER.log(Level.INFO, "Juego ya existe no se puede dar de alta");
+				throw new JuegoException("No se puede dar de alta porque el juego ya existe");
+			} else {
+				juegos.add(juego);
+				LOGGER.log(Level.INFO, "Juego dado de alta " + juego.getNombre());
+			}
+		} else {
+			LOGGER.log(Level.WARNING, "Error dadndo de alta juego, estás intentado dar de alta un juego incorrecto");
+			throw new JuegoException("Intentado dar de alta un jeugo incorrecto");
+		}
+	}
+
+	public List<Juego> listarPorGeneros(TipoGenero tipoGenero) throws JuegoException {
+		List<Juego> juegosPorGenero = new ArrayList<Juego>();
+		for (int i = 0; i < juegos.size(); i++) {
+			if (tipoGenero == juegos.get(i).getTipoGenero()) {
+				juegosPorGenero.add(juegos.get(i));
+			}
+		}
+		if (juegos.size() == 0) {
+			throw new JuegoException("No hay juegos en la base");
+		} else if (juegosPorGenero.size() == 0) {
+			throw new JuegoException("No hay juegos en ese genero");
+		}
+		return juegosPorGenero;
+	}
 }

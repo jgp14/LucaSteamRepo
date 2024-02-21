@@ -9,4 +9,5 @@ public class CsvException extends JuegoException {
     public CsvException(String msg, Throwable e) {
         super(msg, e);
     }
+
 }
