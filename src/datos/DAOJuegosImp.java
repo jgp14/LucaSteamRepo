@@ -7,13 +7,10 @@ import excepciones.CsvException;
 import model.Juego;
 import util.CsvUtils;
 
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 import excepciones.JuegoException;
-
 
 public class DAOJuegosImp implements DAOJuegos {
 
@@ -29,6 +26,7 @@ public class DAOJuegosImp implements DAOJuegos {
 		this.listaEditor = new ListaEditor();
 		this.listaPlataforma = new ListaPlataforma();
 	}
+
 	@Override
 	public boolean existeJuego(Juego juegoCompara) {
 		for (Juego juego : juegos) {
@@ -38,6 +36,7 @@ public class DAOJuegosImp implements DAOJuegos {
 		}
 		return false;
 	}
+
 	public DAOJuegosImp(List<Juego> juegos, ListaEditor listaEditor, ListaPlataforma listaPlataforma) {
 		super();
 		this.juegos = juegos;
@@ -52,8 +51,6 @@ public class DAOJuegosImp implements DAOJuegos {
 	public void setJuegos(List<Juego> juegos) {
 		this.juegos = juegos;
 	}
-	
-	
 
 	public ListaEditor getListaEditor() {
 		return listaEditor;
@@ -74,12 +71,12 @@ public class DAOJuegosImp implements DAOJuegos {
 	@Override
 	public void cargarDatos(String nombreFichero) throws CsvException {
 		juegos = CsvUtils.deCsvAList(nombreFichero);
+		System.out.println(juegos.size());
 
 	}
-	
 
-    @Override
-    public void altaJuego(Juego juego) throws JuegoException {
+	@Override
+	public void altaJuego(Juego juego) throws JuegoException {
 
 		if (juego != null) {
 			if (existeJuego(juego)) {
@@ -91,5 +88,5 @@ public class DAOJuegosImp implements DAOJuegos {
 		} else {
 			LOGGER.log(Level.WARNING, "Error dadndo de alta juego, estás intentado dar de alta un juego null");
 		}
-    }
+	}
 }

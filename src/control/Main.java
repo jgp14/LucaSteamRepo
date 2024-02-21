@@ -11,12 +11,12 @@ public class Main {
 		System.out.println("dani");
 		
 		//Prueba Cargar Datos
-		DAOJuegosImp dao = new DAOJuegosImp();
+		/*DAOJuegosImp dao = new DAOJuegosImp();
 		String nombreFichero= "vgsales.csv";
 		try {
 			dao.cargarDatos(nombreFichero);
 		} catch (CsvException e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 }
