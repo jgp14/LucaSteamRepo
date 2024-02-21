@@ -78,6 +78,8 @@ public class DAOJuegosImp implements DAOJuegos {
 				listaEditor.añadirEditor(juego.getEditor());
 				listaPlataforma.añadirPlataforma(juego.getPlataforma());
 			}
+
+			LOGGER.log(Level.INFO, "Juegos, Editores, Plataformas cargados correctamente");
 		}
 	}
 

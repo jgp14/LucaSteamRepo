@@ -37,7 +37,7 @@ class ListarPorGeneroTest {
     }
 
     @Test
-    public void listarPorGeneroExista() {
+    public void listarPorGeneroNoExiste() {
         assertThrows(IllegalArgumentException.class, () -> servicio.listarPorGenero(TipoGenero.valueOf("prueba")), "Listar por tipo enumerado que no existe");
     }
 }

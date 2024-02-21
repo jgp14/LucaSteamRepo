@@ -22,12 +22,24 @@ public class JuegosControlador {
 	JuegosServicio servicio = new JuegosServicioImpl();
 
 	public void incio() {
-		boolean seguir = true;
-		do {
-			Menu.mostrarMenu();
-			seguir = this.seleccionOpciones();
-		} while (seguir);
-		System.out.println("   --- Fin de la sesion ---");
+
+		boolean salirGeneral = false;
+
+		while (!salirGeneral) {
+			try {
+				boolean seguir = true;
+				do {
+					Menu.mostrarMenu();
+					seguir = this.seleccionOpciones();
+				} while (seguir);
+				System.out.println("   --- Fin de la sesion ---");
+
+				salirGeneral = true;
+			} catch (Exception e) {
+				System.err.println("error");
+			}
+		}
+
 	}
 
 	public void altaJuego() {
