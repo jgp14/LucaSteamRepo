@@ -1,7 +1,7 @@
 package datos;
 
-import servicios.JuegosServicioImpl;
+import model.Juego;
 
 public interface DAOJuegos {
-
+public boolean existeJuego(Juego juego);
 }
