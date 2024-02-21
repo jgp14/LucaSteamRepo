@@ -23,7 +23,7 @@ public class DAOJuegosImp implements DAOJuegos {
 
 	public DAOJuegosImp() {
 		super();
-		this.juegos = new ArrayList<Juego>();
+		this.juegos = new ArrayList<>();
 		this.listaEditor = new ListaEditor();
 		this.listaPlataforma = new ListaPlataforma();
 	}

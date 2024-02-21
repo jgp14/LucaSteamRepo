@@ -1,5 +1,6 @@
-package util;
+package com.lucatic.ruben.utilidades;
 
+import java.io.IOException;
 import java.util.logging.*;
 
 /**
@@ -13,7 +14,7 @@ public class LoggerConfig {
 	public static void configureLogger(Logger logger) {
 
 		try {
-			FileHandler fileHandler = new FileHandler("AvanzadoEmpleadosRubenGV.log", true);
+			FileHandler fileHandler = new FileHandler("juegosfile.log", true);
 			ConsoleHandler consoleHandler = new ConsoleHandler();
 			SimpleFormatter simpleFormatter = new SimpleFormatter();
 
@@ -34,3 +35,4 @@ public class LoggerConfig {
 		}
 	}
 }
+

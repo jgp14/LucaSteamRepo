@@ -11,6 +11,8 @@ import util.LeeDatos;
 
 import vista.Menu;
 
+import java.util.InputMismatchException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -40,17 +42,17 @@ public class JuegosControlador {
 		}
 	}
 
-	public void altaJuego() throws JuegoException {
+	public void altaJuego() throws InputMismatchException, JuegoException {
 		Juego juego = new Juego();
 		System.out.println("Introduce ranking");
-		int ranking = LeeDatos.leeInt();
+		int ranking = LeeDatos.leerInt();
 		System.out.println("Intrdoduce el nombre");
 		String nombre = LeeDatos.leeString();
 		System.out.println("Introduce la plataforma");
 		String plataforma = LeeDatos.leeString();
 		System.out.println("Intoduce fecha");
 
-		int añoFecha = LeeDatos.leeInt();
+		int anioFecha = LeeDatos.leerInt();
 		System.out.println("Introduce tipo genero");
 		TipoGenero tipoGenero = TipoGenero.valueOf(LeeDatos.leeString());
 		System.out.println("Introduce el editor");
@@ -59,7 +61,7 @@ public class JuegosControlador {
 		juego.setRanking(ranking);
 		juego.setNombre(nombre);
 		juego.setPlataforma(plataforma);
-		juego.setFecha(añoFecha);
+		juego.setFecha(anioFecha);
 		juego.setTipoGenero(tipoGenero);
 		juego.setEditor(editor);
 		servicio.altaJuego(juego);
@@ -67,7 +69,7 @@ public class JuegosControlador {
 
 	public boolean seleccionOpciones() throws JuegoException {
 		boolean continuar = true;
-		switch (LeeDatos.leeInt()) {
+		switch (LeeDatos.leerInt()) {
 		case 1:
 			servicio.cargarDatos("vgsales.csv");
 			break;
