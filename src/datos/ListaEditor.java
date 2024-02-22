@@ -7,7 +7,6 @@ public class ListaEditor {
 
 	private Set<String> editores = new HashSet<>();
 
-
 	public ListaEditor() {
 	}
 
@@ -23,10 +22,12 @@ public class ListaEditor {
 		this.editores = editores;
 	}
 
+	public int getTamañoListaEditor() {
+		return editores.size();
+	}
+
 	@Override
 	public String toString() {
-		return "ListaEditor{" +
-				"editores=" + editores +
-				'}';
+		return "ListaEditor{" + "editores=" + editores + '}';
 	}
 }
