@@ -97,6 +97,7 @@ public class JuegosControlador {
             
             case 8:
             	// LISTADO JUEGOS FILTRADOS POR SIGLO
+            	listarPorSigloXX();
             	
 
                 break;
@@ -165,10 +166,11 @@ public class JuegosControlador {
     }
     
     public void listarPorSigloXX() throws JuegoException {
-    	List<Juego> juegosSigloXX = JuegosServicioImpl.listarPorSigloXX();
+    	List<Juego> juegosSigloXX = juegosServicio.listarPorSigloXX();
     	for(int i = 0; i < juegosSigloXX.size(); i++) {
     		System.out.println(juegosSigloXX.get(i));
     	}
+
     }
 
 }
