@@ -13,7 +13,7 @@ public class Menu {
 		System.out.println("2-Alta de juego: ");
 		System.out.println("3-Listado de juegos: ");
 		System.out.println("4-Listado de editores (Publisher): ");
-		System.out.println("5-Listado de plataformas (Consolas): ");
+		System.out.println("5-Listado de juegos (filtrado por plataforma): ");
 		System.out.println("6-Listado de juegos filtrado por género 'Plataforma'");
 		System.out.println("7-Listado de juegos (filtrado por géneros): ");
 		System.out.println("0-Finalizar sesion.");

@@ -6,6 +6,8 @@ import model.TipoGenero;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import datos.ListaEditor;
 import servicios.JuegosServicio;
 import servicios.JuegosServicioImpl;
 import util.LeeDatos;
@@ -124,7 +126,14 @@ public class JuegosControlador {
     }
 
 
-    public static void mostrarLista(List<Juego> juegos) {
+    public static void mostrarListaEditores(ListaEditor listaEditores) {
+		// TODO Auto-generated method stub
+    	
+    	listaEditores.getEditores().forEach(System.out::println);
+		
+	}
+
+	public static void mostrarLista(List<Juego> juegos) {
 
         juegos.forEach(System.out::println);
     }
