@@ -8,6 +8,7 @@ import com.lucatic.bluedevteam.servicios.JuegosServicioImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
 public class ListarSigoXXTest {
 
 	private JuegosServicio juegosServicio;

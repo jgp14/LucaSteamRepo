@@ -8,10 +8,23 @@ import com.lucatic.bluedevteam.servicios.JuegosServicioImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Test para listar por plataforma
+ *
+ * @since 22/02/2024
+ * @author BlueDevTeam
+ * @version 1.0.0
+ */
 class ListarPorPlataformaTest {
 
+	/**
+	 * Instanciar el servicio
+	 */
 	private JuegosServicio juegosServicio;
 
+	/**
+	 * Método que carga los datos de los juegos
+	 */
 	public void cargarDatos() {
 		try {
 			juegosServicio = new JuegosServicioImpl();
@@ -21,10 +34,16 @@ class ListarPorPlataformaTest {
 		}
 	}
 
+	/**
+	 * Este método no carga los datos de los juegos
+	 */
 	public void noCargar() {
 		juegosServicio = new JuegosServicioImpl();
 	}
 
+	/**
+	 * Test para listar por plataforma nula
+	 */
 	@Test
 	void listarPorPlataformaNull() {
 
@@ -32,6 +51,9 @@ class ListarPorPlataformaTest {
 		assertThrows(JuegoException.class, () -> juegosServicio.listarPorPlataforma(null));
 	}
 
+	/**
+	 * Test para listar por plataforma no existente
+	 */
 	@Test
 	void listarPorPlataformaInexistente() {
 
@@ -39,6 +61,9 @@ class ListarPorPlataformaTest {
 		assertThrows(JuegoException.class, () -> juegosServicio.listarPorPlataforma("AAAA"));
 	}
 
+	/**
+	 * Test para listar por plataforma existente
+	 */
 	@Test
 	void listarPorPlataformaExistente() {
 
@@ -46,6 +71,9 @@ class ListarPorPlataformaTest {
 		assertDoesNotThrow(() -> juegosServicio.listarPorPlataforma("DC"));
 	}
 
+	/**
+	 * Test para listar por plataforma si el String de tipo de plataforma está vacía
+	 */
 	@Test
 	void listarPorPlataformaStrVacio() {
 
@@ -53,6 +81,9 @@ class ListarPorPlataformaTest {
 		assertThrows(JuegoException.class, () -> juegosServicio.listarPorPlataforma(""));
 	}
 
+	/**
+	 * Test para
+	 */
 	@Test
 	public void listarPorPlataformaSinCargar() {
 
