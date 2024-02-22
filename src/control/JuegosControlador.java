@@ -80,9 +80,8 @@ public class JuegosControlador {
 			// LISTADO JUEGOS FILTRADO POR PLATAFORMAS(CONSOLAS)
 			String plataforma = listarPlataformas();
 			juegosServicio.listarPorPlataforma(plataforma).forEach(System.out::println);
-
 			break;
-
+			
 		case 6:
 			// LISTADO JUEGOS FILTRADO POR GENERO PLATAFORMA
 			mostrarLista(juegosServicio.listarGeneroPorPlataforma());

@@ -2,14 +2,14 @@ package pruebas;
 
 import excepciones.CsvException;
 import excepciones.JuegoException;
+import model.TipoGenero;
 import org.junit.jupiter.api.Test;
 import servicios.JuegosServicio;
 import servicios.JuegosServicioImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ListarSigoXXTest {
-
+class ListarFiltrandoPorGeneroTest {
     private JuegosServicio juegosServicio;
 
     public void cargarDatos() {
@@ -28,21 +28,25 @@ public class ListarSigoXXTest {
     }
 
     @Test
-    public void ListarSigloXXSinCargar() {
-
-        noCargar();
-        assertThrows(JuegoException.class, () -> juegosServicio.listarPorSigloXX());
-
+    public void listarFiltrandoPorGeneroCargarNoExiste() {
+        cargarDatos();
+        assertThrows(IllegalArgumentException.class, () -> juegosServicio.listarPorGenero(TipoGenero.valueOf("aaa")));
     }
 
     @Test
-    public void listarSigloXXCargando() {
-
+    public void listarFiltrandoPorGeneroCargarExiste() {
         try {
             cargarDatos();
-            assertFalse(juegosServicio.listarPorSigloXX().isEmpty());
+            assertTrue(!juegosServicio.listarPorGenero(TipoGenero.PLATFORM).isEmpty());
         } catch (JuegoException e) {
             throw new RuntimeException(e);
         }
     }
+
+    @Test
+    public void listarFiltrandoPoGeneroNoCargarExiste(){
+        noCargar();
+        assertThrows(JuegoException.class, () -> juegosServicio.listarPorGenero(TipoGenero.PLATFORM));
+    }
+
 }
