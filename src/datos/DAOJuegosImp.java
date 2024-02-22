@@ -153,4 +153,23 @@ public class DAOJuegosImp implements DAOJuegos {
 		}
 		return listaPorPlataforma;
 	}
+
+	public List<Juego> listarPorSigloXX() throws JuegoException {
+		List<Juego> juegosSigloXX = new ArrayList<Juego>();
+		for (int i = 0; i < juegos.size(); i++) {
+			if (juegos.get(i).getFecha() < 2000) {
+				juegosSigloXX.add(juegos.get(i));
+			}
+		}
+		if (juegos.size() == 0) {
+			String msg = "Lista de juegos es  vacia";
+			LOGGER.warn(msg);
+			throw new JuegoException(msg);
+		} else if (juegosSigloXX.size() == 0) {
+			String msg = "No hay juegos en ese siglo";
+			LOGGER.warn(msg);
+			throw new JuegoException(msg);
+		}
+		return juegosSigloXX;
+	}
 }
