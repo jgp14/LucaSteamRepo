@@ -8,8 +8,11 @@ package com.lucatic.bluedevteam.control;
  * @since 22-02-2024
  */
 public class Main {
+
 	/**
-	 * @author BlueDevTeam
+	 * Clase principal main
+	 *
+	 * @param args argumentos por línea de comandos
 	 */
 	public static void main(String[] args) {
 

@@ -230,7 +230,7 @@ public class JuegosControlador {
 	 * Muestra un menu de opciones con los distintos tipos de generos y despues pide
 	 * por consola un codigo y muestra la lista de juegos que comparten genero.
 	 *
-	 * @return
+	 * @return Devuelve el valor de TipoGenero
 	 */
 	public TipoGenero listarPorGenero() {
 		for (int i = 0; i < TipoGenero.values().length; i++) {
