@@ -59,7 +59,7 @@ public class JuegosServicioImpl implements JuegosServicio {
 	}
 
 	@Override
-	public ListaPlataforma getPlataformas() {
+	public ListaPlataforma getListaPlataformas() {
 
 		return daoJuegos.getListaPlataforma();
 	}

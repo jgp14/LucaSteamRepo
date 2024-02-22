@@ -12,8 +12,10 @@ import util.LeeDatos;
 
 import vista.Menu;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Set;
 
 public class JuegosControlador {
 
@@ -46,28 +48,6 @@ public class JuegosControlador {
         }
     }
 
-    public void altaJuego() throws InputMismatchException, JuegoException {
-
-        Juego juego = new Juego();
-
-        int ranking = LeeDatos.leerInt("Introdue ranking");
-
-        String nombre = LeeDatos.leerString("Intrdoduce el nombre");
-        String plataforma = LeeDatos.leerString("Introduce la plataforma");
-        int anioFecha = LeeDatos.leerInt("Intoduce fecha");
-        TipoGenero tipoGenero = TipoGenero.valueOf(LeeDatos.leerString("Introduce tipo genero"));
-        String editor = LeeDatos.leerString("Introduce el editor");
-
-        juego.setRanking(ranking);
-        juego.setNombre(nombre);
-        juego.setPlataforma(plataforma);
-        juego.setFecha(anioFecha);
-        juego.setTipoGenero(tipoGenero);
-        juego.setEditor(editor);
-
-        juegosServicio.altaJuego(juego);
-    }
-
     public boolean seleccionOpciones() throws JuegoException, InputMismatchException {
 
         boolean continuar = true;
@@ -90,19 +70,24 @@ public class JuegosControlador {
 
             case 4:
                 // LISTADO EDITORES
-
+                break;
+            case 5:
+                // LISTADO JUEGOS FILTRADO POR PLATAFORMAS(CONSOLAS)
+               	String genero = listarPlataformas();
+                juegosServicio.listarPorPlataforma(genero).forEach(System.out::println);
                 break;
 
-            case 5:
+            case 6:
                 // LISTADO JUEGOS FILTRADO POR GENERO PLATAFORMA
                 mostrarLista(juegosServicio.listarGeneroPorPlataforma());
                 break;
 
-            case 6:
+            case 7:
                 // LISTADO JUEGOS FILTRADO POR GENERO
 
                 break;
-
+ 
+            
             case 8:
 
                 break;
@@ -114,10 +99,49 @@ public class JuegosControlador {
 
         return continuar;
     }
+    
+
+    public void altaJuego() throws InputMismatchException, JuegoException {
+
+        Juego juego = new Juego();
+
+        int ranking = LeeDatos.leerInt("Introdue ranking");
+
+        String nombre = LeeDatos.leerString("Intrdoduce el nombre");
+        String plataforma = LeeDatos.leerString("Introduce la plataforma");
+        int anioFecha = LeeDatos.leerInt("Intoduce fecha");
+        TipoGenero tipoGenero = TipoGenero.valueOf(LeeDatos.leerString("Introduce tipo genero"));
+        String editor = LeeDatos.leerString("Introduce el editor");
+
+        juego.setRanking(ranking);
+        juego.setNombre(nombre);
+        juego.setPlataforma(plataforma);
+        juego.setFecha(anioFecha);
+        juego.setTipoGenero(tipoGenero);
+        juego.setEditor(editor);
+
+        juegosServicio.altaJuego(juego);
+    }
+
 
     public static void mostrarLista(List<Juego> juegos) {
 
         juegos.forEach(System.out::println);
+    }
+    
+    public String listarPlataformas() {
+    	Set<String> plataformas = juegosServicio.getListaPlataformas().getPlataformas();
+    	List<String> plataformasList = new ArrayList<>(plataformas);
+    	System.out.println("Elige un editor de la lista: ");
+    	for(int i = 0; i < plataformasList.size(); i++) {
+    		System.out.println((i+1)+" - "+plataformasList.get(i));
+    	}
+    	int n = 0;
+    	do {
+    		System.out.print("Dime codigo de plataforma: ");
+        	n = LeeDatos.leerInt();
+    	}while(n <= 0 || n > plataformasList.size());    	
+    	return plataformasList.get(n-1);
     }
 
 }
