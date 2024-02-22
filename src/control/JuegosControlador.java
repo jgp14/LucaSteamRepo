@@ -52,60 +52,63 @@ public class JuegosControlador {
 
 	public boolean seleccionOpciones() throws JuegoException, InputMismatchException {
 
-        boolean continuar = true;
+		boolean continuar = true;
 
-        switch (LeeDatos.leerInt()) {
+		switch (LeeDatos.leerInt()) {
 
-            case 1:
-                juegosServicio.cargarDatos("vgsales.csv");
-                break;
+		case 1:
+			juegosServicio.cargarDatos("vgsales.csv");
+			break;
 
-            case 2:
-                // ALTA DE UN JUEGO
-                altaJuego();
-                break;
+		case 2:
+			// ALTA DE UN JUEGO
+			altaJuego();
+			break;
 
-            case 3:
-                // LISTADO JUEGOS
-                mostrarLista(juegosServicio.listarJuegos());
-                break;
+		case 3:
+			// LISTADO JUEGOS
+			mostrarLista(juegosServicio.listarJuegos());
+			break;
 
-            case 4:
-                // LISTADO EDITORES
-				mostrarListaEditores(juegosServicio.getListaEditores());
+		case 4:
+			// LISTADO EDITORES
+			mostrarListaEditores(juegosServicio.getListaEditores());
 
-                break;
-                
-            case 5:
-                // LISTADO JUEGOS FILTRADO POR PLATAFORMAS(CONSOLAS)
-               	String plataforma = listarPlataformas();
-                juegosServicio.listarPorPlataforma(plataforma).forEach(System.out::println);
+			break;
 
-                break;
+		case 5:
+			// LISTADO JUEGOS FILTRADO POR PLATAFORMAS(CONSOLAS)
+			String plataforma = listarPlataformas();
+			juegosServicio.listarPorPlataforma(plataforma).forEach(System.out::println);
 
-            case 6:
-                // LISTADO JUEGOS FILTRADO POR GENERO PLATAFORMA
-                mostrarLista(juegosServicio.listarGeneroPorPlataforma());
-                break;
-            
-            case 7:
-            	// LISTADO JUEGOS FILTRADOS POR SIGLO
-            	listarPorSigloXX();       
-                break;
-                
-            case 8:
-                // LISTADO JUEGOS FILTRADO POR GENERO
-				var genero = listarPorGenero();
-				mostrarLista(juegosServicio.listarPorGenero(genero));
-				break;
- 
-            case 0:
-                continuar = false;
-                break;
-        }
+			break;
 
-        return continuar;
-    }
+		case 6:
+			// LISTADO JUEGOS FILTRADO POR GENERO PLATAFORMA
+			mostrarLista(juegosServicio.listarGeneroPorPlataforma());
+			break;
+
+		case 7:
+			// LISTADO JUEGOS FILTRADOS POR SIGLO
+			listarPorSigloXX();
+			break;
+
+		case 8:
+			// LISTADO JUEGOS FILTRADO POR GENERO
+			var genero = listarPorGenero();
+			mostrarLista(juegosServicio.listarPorGenero(genero));
+			break;
+		case 9:
+			listarPorAnhosPares();
+			break;
+
+		case 0:
+			continuar = false;
+			break;
+		}
+
+		return continuar;
+	}
 
 	public void altaJuego() throws InputMismatchException, JuegoException {
 
@@ -164,18 +167,25 @@ public class JuegosControlador {
 		for (int i = 0; i < juegosSigloXX.size(); i++) {
 			System.out.println(juegosSigloXX.get(i));
 		}
-
 	}
 
-	public TipoGenero listarPorGenero() throws JuegoException{
-    	for(int i = 0; i < TipoGenero.values().length; i++) {
-    		System.out.println((i+1)+" - "+TipoGenero.values()[i]);
-    	}
-    	int n = 0;
-    	do {
-    		System.out.print("Dime el codigo de genero de videojuego: ");
-        	n = LeeDatos.leerInt();
-    	}while(n <= 0 || n > TipoGenero.values().length);
-    	return TipoGenero.values()[n-1];
+	public TipoGenero listarPorGenero() throws JuegoException {
+		for (int i = 0; i < TipoGenero.values().length; i++) {
+			System.out.println((i + 1) + " - " + TipoGenero.values()[i]);
+		}
+		int n = 0;
+		do {
+			System.out.print("Dime el codigo de genero de videojuego: ");
+			n = LeeDatos.leerInt();
+		} while (n <= 0 || n > TipoGenero.values().length);
+		return TipoGenero.values()[n - 1];
 	}
+
+	public void listarPorAnhosPares() throws JuegoException {
+		List<Juego> juegosAnhosPares = juegosServicio.listarPorAnhosPares();
+		for (Juego juego : juegosAnhosPares) {
+			System.out.println(juego.toString());
+		}
+	}
+
 }

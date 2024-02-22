@@ -172,4 +172,28 @@ public class DAOJuegosImp implements DAOJuegos {
 		}
 		return juegosSigloXX;
 	}
+
+	@Override
+	public List<Juego> listarPorAnhosPares() throws JuegoException {
+		List<Juego> juegosAnhosPares = new ArrayList<Juego>();
+
+		if (juegos.size() == 0) {
+			String msg = "Lista de juegos es  vacia";
+			LOGGER.warn(msg);
+			throw new JuegoException(msg);
+		}
+
+		for (int i = 0; i < juegos.size(); i++) {
+			if (juegos.get(i).getFecha() % 2 == 0) {
+				juegosAnhosPares.add(juegos.get(i));
+			}
+		}
+
+		if (juegosAnhosPares.size() == 0) {
+			String msg = "No hay juegos en años pares";
+			LOGGER.warn(msg);
+			throw new JuegoException(msg);
+		}
+		return juegosAnhosPares;
+	}
 }

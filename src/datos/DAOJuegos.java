@@ -28,4 +28,6 @@ public interface DAOJuegos {
 	List<Juego> getJuegos();
 
 	List<Juego> listarPorSigloXX() throws JuegoException;
+
+	List<Juego> listarPorAnhosPares() throws JuegoException;
 }

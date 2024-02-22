@@ -78,4 +78,9 @@ public class JuegosServicioImpl implements JuegosServicio {
 	public List<Juego> listarPorSigloXX() throws JuegoException {
 		return daoJuegos.listarPorSigloXX();
 	}
+
+	@Override
+	public List<Juego> listarPorAnhosPares() throws JuegoException {
+		return daoJuegos.listarPorAnhosPares();
+	}
 }
