@@ -1,8 +1,8 @@
-package util;
+package com.lucatic.bluedevteam.util;
 
-import excepciones.CsvException;
-import model.Juego;
-import model.TipoGenero;
+import com.lucatic.bluedevteam.excepciones.CsvException;
+import com.lucatic.bluedevteam.model.Juego;
+import com.lucatic.bluedevteam.model.TipoGenero;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
