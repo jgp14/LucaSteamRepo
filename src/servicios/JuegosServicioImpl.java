@@ -78,6 +78,4 @@ public class JuegosServicioImpl implements JuegosServicio {
 	public List<Juego> listarPorSigloXX() throws JuegoException {
 		return daoJuegos.listarPorSigloXX();
 	}
-	
-	
 }

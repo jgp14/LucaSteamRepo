@@ -26,4 +26,5 @@ public interface DAOJuegos {
 	ListaEditor getListaEditor();
 
 	List<Juego> getJuegos();
+	List<Juego> listarPorSigloXX()throws JuegoException;
 }
