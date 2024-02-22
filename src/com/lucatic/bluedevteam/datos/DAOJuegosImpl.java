@@ -12,22 +12,51 @@ import com.lucatic.bluedevteam.util.CsvUtils;
 
 import com.lucatic.bluedevteam.excepciones.JuegoException;
 
+/**
+ * Clase que valida todos los datos de la aplicacion
+ * 
+ * @since 22/02/2024
+ * @author BlueDevTeam
+ * @version 1.0.0
+ */
 public class DAOJuegosImpl implements DAOJuegos {
-
+	/**
+	 * Atributo que gestiona la carga de datos
+	 */
 	private static int count = 0;
-
+	/**
+	 * Atributo que gestiona los logs producidos en la clase
+	 */
 	private static final Logger LOGGER = LogManager.getLogger(DAOJuegosImpl.class);
-
+	/**
+	 * Lista de objetos Juego. Almacena todos los juegos de la aplicacion
+	 */
 	private List<Juego> juegos;
+	/**
+	 * Objeto de tipo ListaEditor. Gestiona todos los editores de la aplicacion
+	 */
 	private ListaEditor listaEditor;
+	/**
+	 * Objeto de tipo ListaPlataforma. Gestiona todos las plataformas de la
+	 * aplicacion
+	 */
 	private ListaPlataforma listaPlataforma;
 
+	/**
+	 * Contructor de clase vacio que inicializa atributos
+	 */
 	public DAOJuegosImpl() {
 		this.juegos = new ArrayList<>();
 		this.listaEditor = new ListaEditor();
 		this.listaPlataforma = new ListaPlataforma();
 	}
 
+	/**
+	 * Comprueba si el juego de parametro ya existe en la lista juegos
+	 * 
+	 * @param juegoCompara
+	 * @return Devuelve un booleano dependiendo de si existe o no el juego
+	 */
 	@Override
 	public boolean existeJuego(Juego juegoCompara) {
 
@@ -40,6 +69,13 @@ public class DAOJuegosImpl implements DAOJuegos {
 		return false;
 	}
 
+	/**
+	 * Constructor que incializa los atributos de clase con valores nuevos
+	 * 
+	 * @param juegos
+	 * @param listaEditor
+	 * @param listaPlataforma
+	 */
 	public DAOJuegosImpl(List<Juego> juegos, ListaEditor listaEditor, ListaPlataforma listaPlataforma) {
 
 		this.juegos = juegos;
@@ -47,30 +83,69 @@ public class DAOJuegosImpl implements DAOJuegos {
 		this.listaPlataforma = listaPlataforma;
 	}
 
+	/**
+	 * Devuelve una lista de todos los juegos almacenados
+	 * 
+	 * @return Devuelve una lista de todos los juegos almacenados
+	 */
 	public List<Juego> getJuegos() {
 		return juegos;
 	}
 
+	/**
+	 * Reestablece la lista de juegos a una nueva pasada por parametro
+	 * 
+	 * @param juegos
+	 */
 	public void setJuegos(List<Juego> juegos) {
 		this.juegos = juegos;
 	}
 
+	/**
+	 * Devuelve un objeto de tipo ListaEditor
+	 * 
+	 * @return Devuelve un objeto de tipo ListaEditor
+	 * @see ListaEditor
+	 */
 	public ListaEditor getListaEditor() {
 		return listaEditor;
 	}
 
+	/**
+	 * Modifica el objeto de ListaEditor reestableciendose al atributo
+	 * 
+	 * @param listaEditor
+	 */
 	public void setListaEditor(ListaEditor listaEditor) {
 		this.listaEditor = listaEditor;
 	}
 
+	/**
+	 * Devuelve el objeto ListaPlataforma
+	 * 
+	 * @return Devuelve el objeto ListaPlataforma
+	 * @see ListaPlataforma
+	 */
 	public ListaPlataforma getListaPlataforma() {
 		return listaPlataforma;
 	}
 
+	/**
+	 * Modifica el objeto de ListaPlataforma reestableciendose al atributo
+	 * 
+	 * @param listaPlataforma
+	 */
 	public void setListaPlataforma(ListaPlataforma listaPlataforma) {
 		this.listaPlataforma = listaPlataforma;
 	}
 
+	/**
+	 * Se encarga de recolectar datos de un fichero. Ejecuta una excepcion si hay
+	 * algun error en la carga
+	 * 
+	 * @param nombreFichero
+	 * @throws nombreFichero
+	 */
 	@Override
 	public void cargarDatos(String nombreFichero) throws CsvException {
 
@@ -98,6 +173,13 @@ public class DAOJuegosImpl implements DAOJuegos {
 
 	}
 
+	/**
+	 * Registra un nuevo juego en la lista de juegos. Lanza la exepcion si el juego
+	 * ya existe o es incorrecto
+	 * 
+	 * @param juego
+	 * @throws JuegoException
+	 */
 	@Override
 	public void altaJuego(Juego juego) throws JuegoException {
 
@@ -113,10 +195,19 @@ public class DAOJuegosImpl implements DAOJuegos {
 			}
 		} else {
 			LOGGER.warn("Error dadndo de alta juego, estás intentado dar de alta un juego incorrecto");
-			throw new JuegoException("Intentado dar de alta un jeugo incorrecto");
+			throw new JuegoException("Intentado dar de alta un juego incorrecto");
 		}
 	}
 
+	/**
+	 * Devuelve una lista de Juego filtrados por la enumeracion de TipoGenero. Lanza
+	 * excepcion si no existe el genero
+	 * 
+	 * @param tipoGenero
+	 * @return Devuelve una lista de Juego filtrados por la enumeracion de
+	 *         TipoGenero
+	 * @throws JuegoException
+	 */
 	public List<Juego> listarPorGeneros(TipoGenero tipoGenero) throws JuegoException {
 
 		List<Juego> juegosPorGenero = new ArrayList<>();
@@ -138,6 +229,13 @@ public class DAOJuegosImpl implements DAOJuegos {
 		return juegosPorGenero;
 	}
 
+	/**
+	 * Devuelve una lista de juegos registrados. Lanza una excepción si no hay
+	 * juegos
+	 * 
+	 * @return Devuelve una lista de juegos registrados
+	 * @throws JuegoException
+	 */
 	@Override
 	public List<Juego> listarJuegos() throws JuegoException {
 
@@ -153,6 +251,15 @@ public class DAOJuegosImpl implements DAOJuegos {
 		}
 	}
 
+	/**
+	 * Genera una lista con los juegos de la plataforma pasada como parametro. Lanza
+	 * una excepción en caso de no existir esta plataforma
+	 * 
+	 * @param nombrePlataforma
+	 * @throws JuegoException
+	 * @return Genera una lista con los juegos de la plataforma pasada como
+	 *         parametro
+	 */
 	public List<Juego> listarPorPlataforma(String nombrePlataforma) throws JuegoException {
 
 		List<Juego> listaPorPlataforma = new ArrayList<>();
@@ -174,6 +281,12 @@ public class DAOJuegosImpl implements DAOJuegos {
 		return listaPorPlataforma;
 	}
 
+	/**
+	 * Devuelve una lista de objeto Juego de juegos del siglo XX
+	 * 
+	 * @return Devuelve una lista de objeto Juego de juegos del siglo XX
+	 * @throws JuegoException
+	 */
 	public List<Juego> listarPorSigloXX() throws JuegoException {
 		List<Juego> juegosSigloXX = new ArrayList<>();
 		for (int i = 0; i < juegos.size(); i++) {
@@ -192,6 +305,14 @@ public class DAOJuegosImpl implements DAOJuegos {
 		}
 		return juegosSigloXX;
 	}
+
+	/**
+	 * Devuelve una lista de objeto Juego que aparecieron en los anios pares o
+	 * ejecuta una excepcion si no hay juegos en estos anios
+	 * 
+	 * @return Devuelve una lista de objeto Juego que aparecieron en los anios pares
+	 * @throws JuegoException
+	 */
 
 	@Override
 	public List<Juego> listarPorAnhosPares() throws JuegoException {

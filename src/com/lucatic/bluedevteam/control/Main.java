@@ -8,10 +8,12 @@ package com.lucatic.bluedevteam.control;
  * @since 22-02-2024
  */
 public class Main {
-
+	/**
+	 * @author BlueDevTeam
+	 */
 	public static void main(String[] args) {
 
 		new JuegosControlador().inicio();
-
 	}
+
 }
