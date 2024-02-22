@@ -313,6 +313,7 @@ public class DAOJuegosImpl implements DAOJuegos {
 	 * @return Devuelve una lista de objeto Juego que aparecieron en los anios pares
 	 * @throws JuegoException
 	 */
+
 	@Override
 	public List<Juego> listarPorAnhosPares() throws JuegoException {
 		List<Juego> juegosAnhosPares = new ArrayList<>();

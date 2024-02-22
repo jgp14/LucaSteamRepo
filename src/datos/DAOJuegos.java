@@ -14,6 +14,7 @@ import model.TipoGenero;
  * @author BlueDevTeam
  * @version 1.0.0
  */
+
 public interface DAOJuegos {
 	/**
 	 * Se encarga de recolectar datos de un fichero. Ejecuta una excepcion si hay
@@ -112,4 +113,5 @@ public interface DAOJuegos {
 	 * @throws JuegoException
 	 */
 	List<Juego> listarPorAnhosPares() throws JuegoException;
+
 }

@@ -10,6 +10,7 @@ import java.util.Set;
  * @version 1.0.0
  */
 public class ListaPlataforma {
+
 	/**
 	 * Atributo que almacena plataformas de manera unica
 	 */
@@ -75,4 +76,5 @@ public class ListaPlataforma {
     public String toString() {
         return "ListaPlataforma{" + "plataformas=" + plataformas + '}';
     }
+
 }

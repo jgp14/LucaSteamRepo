@@ -15,77 +15,77 @@ import org.apache.logging.log4j.Logger;
 
 public class JuegosServicioImpl implements JuegosServicio {
 
-    private static final Logger LOGGER = LogManager.getLogger(JuegosServicioImpl.class);
+	private static final Logger LOGGER = LogManager.getLogger(JuegosServicioImpl.class);
 
-    DAOJuegos daoJuegos = new DAOJuegosImpl();
+	private DAOJuegos daoJuegos = new DAOJuegosImpl();
 
-    @Override
-    public void cargarDatos(String nombreFichero) throws CsvException {
+	@Override
+	public void cargarDatos(String nombreFichero) throws CsvException {
 
-        if (nombreFichero != null) {
-            daoJuegos.cargarDatos(nombreFichero);
-        } else {
-            LOGGER.error("Fichero csv con valor null");
-            throw new CsvException("Fichero con valor null");
-        }
-    }
+		if (nombreFichero != null) {
+			daoJuegos.cargarDatos(nombreFichero);
+		} else {
+			LOGGER.error("Fichero csv con valor null");
+			throw new CsvException("Fichero con valor null");
+		}
+	}
 
-    @Override
-    public void altaJuego(Juego juego) throws JuegoException {
+	@Override
+	public void altaJuego(Juego juego) throws JuegoException {
 
-        daoJuegos.altaJuego(juego);
-    }
+		daoJuegos.altaJuego(juego);
+	}
 
-    @Override
-    public List<Juego> listarJuegos() throws JuegoException {
+	@Override
+	public List<Juego> listarJuegos() throws JuegoException {
 
-        return daoJuegos.listarJuegos();
-    }
+		return daoJuegos.listarJuegos();
+	}
 
-    public List<Juego> listarGeneroPorPlataforma() throws JuegoException {
+	public List<Juego> listarGeneroPorPlataforma() throws JuegoException {
 
-        return listarPorGenero(TipoGenero.PLATFORM);
-    }
+		return listarPorGenero(TipoGenero.PLATFORM);
+	}
 
-    @Override
-    public List<Juego> listarPorGenero(TipoGenero tipoGenero) throws JuegoException {
+	@Override
+	public List<Juego> listarPorGenero(TipoGenero tipoGenero) throws JuegoException {
 
-        if (tipoGenero != null)
-            return daoJuegos.listarPorGeneros(tipoGenero);
-        else {
-            LOGGER.warn("Tipo de genero es listar por genero es null");
-            throw new JuegoException("Tipo de genero en listar por genero es null");
-        }
-    }
+		if (tipoGenero != null)
+			return daoJuegos.listarPorGeneros(tipoGenero);
+		else {
+			LOGGER.warn("Tipo de genero es listar por genero es null");
+			throw new JuegoException("Tipo de genero en listar por genero es null");
+		}
+	}
 
-    @Override
-    public ListaPlataforma getListaPlataformas() {
+	@Override
+	public ListaPlataforma getListaPlataformas() {
 
-        return daoJuegos.getListaPlataforma();
-    }
+		return daoJuegos.getListaPlataforma();
+	}
 
-    public List<Juego> listarPorPlataforma(String nombrePlataforma) throws JuegoException {
+	public List<Juego> listarPorPlataforma(String nombrePlataforma) throws JuegoException {
 
-        if (nombrePlataforma != null) {
-            return daoJuegos.listarPorPlataforma(nombrePlataforma);
-        } else {
-            LOGGER.warn("Nombre de plataforma es nulo");
-            throw new JuegoException("ListaPorPlataforma - Nombre de plataforma es nulo");
-        }
-    }
+		if (nombrePlataforma != null) {
+			return daoJuegos.listarPorPlataforma(nombrePlataforma);
+		} else {
+			LOGGER.warn("Nombre de plataforma es nulo");
+			throw new JuegoException("ListaPorPlataforma - Nombre de plataforma es nulo");
+		}
+	}
 
-    @Override
-    public ListaEditor getListaEditores() {
-        return daoJuegos.getListaEditor();
-    }
+	@Override
+	public ListaEditor getListaEditores() {
+		return daoJuegos.getListaEditor();
+	}
 
-    @Override
-    public List<Juego> listarPorSigloXX() throws JuegoException {
-        return daoJuegos.listarPorSigloXX();
-    }
+	@Override
+	public List<Juego> listarPorSigloXX() throws JuegoException {
+		return daoJuegos.listarPorSigloXX();
+	}
 
-    @Override
-    public List<Juego> listarPorAnhosPares() throws JuegoException {
-        return daoJuegos.listarPorAnhosPares();
-    }
+	@Override
+	public List<Juego> listarPorAnhosPares() throws JuegoException {
+		return daoJuegos.listarPorAnhosPares();
+	}
 }
