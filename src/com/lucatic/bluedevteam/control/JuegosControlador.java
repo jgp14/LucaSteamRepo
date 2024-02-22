@@ -1,10 +1,9 @@
 package com.lucatic.bluedevteam.control;
 
-import excepciones.JuegoException;
-import model.Juego;
-import model.TipoGenero;
 
-
+import com.lucatic.bluedevteam.excepciones.JuegoException;
+import com.lucatic.bluedevteam.model.Juego;
+import com.lucatic.bluedevteam.model.TipoGenero;
 import com.lucatic.bluedevteam.util.LeeDatos;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,10 +14,7 @@ import com.lucatic.bluedevteam.servicios.JuegosServicioImpl;
 
 import com.lucatic.bluedevteam.vista.Menu;
 
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Clase JuegoControlador que se instancia de en la main y carga el metodo de
