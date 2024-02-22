@@ -91,10 +91,14 @@ public class JuegosControlador {
             case 7:
                 // LISTADO JUEGOS FILTRADO POR GENERO
 
+
                 break;
  
             
             case 8:
+            	// LISTADO JUEGOS FILTRADOS POR SIGLO
+            	listarPorSigloXX();
+
 
                 break;
 
@@ -159,6 +163,14 @@ public class JuegosControlador {
     	}while(n <= 0 || n > plataformasList.size());
 
     	return plataformasList.get(n-1);
+    }
+    
+    public void listarPorSigloXX() throws JuegoException {
+    	List<Juego> juegosSigloXX = juegosServicio.listarPorSigloXX();
+    	for(int i = 0; i < juegosSigloXX.size(); i++) {
+    		System.out.println(juegosSigloXX.get(i));
+    	}
+
     }
 
 }
