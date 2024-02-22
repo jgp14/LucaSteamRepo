@@ -152,5 +152,9 @@ public class JuegosControlador {
     	}while(n <= 0 || n > plataformasList.size());    	
     	return plataformasList.get(n-1);
     }
+    
+    public listarPorSigloXX() {
+    	juegosServicio.listarPorSigloXX().forEach(System.out::println);
+    }
 
 }

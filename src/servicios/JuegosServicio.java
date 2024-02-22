@@ -19,4 +19,5 @@ public interface JuegosServicio {
 	ListaPlataforma getListaPlataformas();
 	List<Juego> listarPorPlataforma(String nombrePlataforma) throws JuegoException;
 	ListaEditor getListaEditores();
+	List<Juego> listarPorSigloXX() throws JuegoException;
 }
