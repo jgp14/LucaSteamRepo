@@ -29,8 +29,15 @@ import java.util.Set;
  */
 public class JuegosControlador {
 
+	/**
+	 * Logger que registra en un archivo los errores y excepciones de JuegosControlador
+	 */
     private static final Logger LOGGER = LogManager.getLogger(JuegosControlador.class);
 
+    
+    /**
+     * Clase que permite utilizar los metodos del servicio.
+     */
     JuegosServicio juegosServicio = new JuegosServicioImpl();
 
     /**
