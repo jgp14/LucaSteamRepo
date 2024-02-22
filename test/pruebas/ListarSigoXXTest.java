@@ -31,13 +31,18 @@ public class ListarSigoXXTest {
     public void ListarSigloXXSinCargar() {
 
         noCargar();
+        assertThrows(JuegoException.class, () -> juegosServicio.listarPorSigloXX());
 
     }
 
     @Test
     public void listarSigloXXCargando() {
 
-        cargarDatos();
+        try {
+            cargarDatos();
+            assertTrue(!juegosServicio.listarPorSigloXX().isEmpty());
+        } catch (JuegoException e) {
+            throw new RuntimeException(e);
+        }
     }
-
 }
