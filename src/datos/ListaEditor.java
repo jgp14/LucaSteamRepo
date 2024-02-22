@@ -22,7 +22,7 @@ public class ListaEditor {
 		this.editores = editores;
 	}
 
-	public int getTamañoListaEditor() {
+	public int getSizeListaEditor() {
 		return editores.size();
 	}
 
