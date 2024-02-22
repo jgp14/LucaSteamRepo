@@ -54,7 +54,7 @@ public class DAOJuegosImpl implements DAOJuegos {
 	/**
 	 * Comprueba si el juego de parametro ya existe en la lista juegos
 	 * 
-	 * @param juegoCompara
+	 * @param juego Recive un juego de parametro para comprovar su existencia
 	 * @return Devuelve un booleano dependiendo de si existe o no el juego
 	 */
 	@Override
@@ -140,11 +140,10 @@ public class DAOJuegosImpl implements DAOJuegos {
 	}
 
 	/**
-	 * Se encarga de recolectar datos de un fichero. Ejecuta una excepcion si hay
-	 * algun error en la carga
+	 * Se encarga de recolectar datos de un fichero. 
 	 * 
-	 * @param nombreFichero
-	 * @throws nombreFichero
+	 * @param nombreFichero Indica el nombre de un fichero csv
+	 * @throws CsvException Ejecuta una excepcion si hay algun error en la carga
 	 */
 	@Override
 	public void cargarDatos(String nombreFichero) throws CsvException {
@@ -177,8 +176,8 @@ public class DAOJuegosImpl implements DAOJuegos {
 	 * Registra un nuevo juego en la lista de juegos. Lanza la exepcion si el juego
 	 * ya existe o es incorrecto
 	 * 
-	 * @param juego
-	 * @throws JuegoException
+	 * @param juego recoje un objeto tipo Juego
+	 * @throws JuegoException Se ejecuta la excepcion si el juego no es valido
 	 */
 	@Override
 	public void altaJuego(Juego juego) throws JuegoException {
@@ -203,10 +202,10 @@ public class DAOJuegosImpl implements DAOJuegos {
 	 * Devuelve una lista de Juego filtrados por la enumeracion de TipoGenero. Lanza
 	 * excepcion si no existe el genero
 	 * 
-	 * @param tipoGenero
+	 * @param tipoGenero Recoje un tipo de genero para comparar en el listado
 	 * @return Devuelve una lista de Juego filtrados por la enumeracion de
 	 *         TipoGenero
-	 * @throws JuegoException
+	 * @throws JuegoException Se ejecuta si no hay ningun genero de este tipo
 	 */
 	public List<Juego> listarPorGeneros(TipoGenero tipoGenero) throws JuegoException {
 
@@ -234,7 +233,7 @@ public class DAOJuegosImpl implements DAOJuegos {
 	 * juegos
 	 * 
 	 * @return Devuelve una lista de juegos registrados
-	 * @throws JuegoException
+	 * @throws JuegoException Devuelve la excepcion si no hay juegos registrados
 	 */
 	@Override
 	public List<Juego> listarJuegos() throws JuegoException {
@@ -255,8 +254,8 @@ public class DAOJuegosImpl implements DAOJuegos {
 	 * Genera una lista con los juegos de la plataforma pasada como parametro. Lanza
 	 * una excepción en caso de no existir esta plataforma
 	 * 
-	 * @param nombrePlataforma
-	 * @throws JuegoException
+	 * @param nombrePlataforma Recoge una cadena de tipo de plataforma
+	 * @throws JuegoException Devuelve una excepcion si el nombre de la plataforma es incorrecta
 	 * @return Genera una lista con los juegos de la plataforma pasada como
 	 *         parametro
 	 */
@@ -280,12 +279,11 @@ public class DAOJuegosImpl implements DAOJuegos {
 		}
 		return listaPorPlataforma;
 	}
-
 	/**
 	 * Devuelve una lista de objeto Juego de juegos del siglo XX
 	 * 
 	 * @return Devuelve una lista de objeto Juego de juegos del siglo XX
-	 * @throws JuegoException
+	 * @throws JuegoException Devuelve la excepcion si no hay juegos de ese siglo
 	 */
 	public List<Juego> listarPorSigloXX() throws JuegoException {
 		List<Juego> juegosSigloXX = new ArrayList<>();
@@ -311,7 +309,7 @@ public class DAOJuegosImpl implements DAOJuegos {
 	 * ejecuta una excepcion si no hay juegos en estos anios
 	 * 
 	 * @return Devuelve una lista de objeto Juego que aparecieron en los anios pares
-	 * @throws JuegoException
+	 * @throws JuegoException Devuelve la excepcion si no hay juegos en anios pares
 	 */
 
 	@Override
