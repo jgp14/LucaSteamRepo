@@ -26,6 +26,7 @@ public class ListarSigoXXTest {
 	/**
 	 * Carga los datos del fichero .csv y sino devuelve una RuntimeException. Sirve
 	 * para contemplar los casos de datos cargados correctamente.
+	 * Captura una CsvExcaption y lanza un RuntimeException
 	 */
 	public void cargarDatos() {
 

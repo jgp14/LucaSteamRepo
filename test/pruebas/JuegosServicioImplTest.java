@@ -11,7 +11,7 @@ import servicios.JuegosServicioImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-**
+/**
 * Clase de pruebas unitarias para JuegosServiciosImpl.
 * 
 * @since 22/02/2024
