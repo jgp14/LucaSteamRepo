@@ -8,6 +8,7 @@ import model.Juego;
 import model.TipoGenero;
 
 public interface DAOJuegos {
+
 	void cargarDatos(String nombreFichero) throws CsvException;
 	boolean existeJuego(Juego juego);
 	void altaJuego(Juego juego) throws JuegoException;

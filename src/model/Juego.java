@@ -12,7 +12,6 @@ public class Juego {
 	private String editor;
 
 	public Juego() {
-
 	}
 
 	public Juego(int ranking, String nombre, String plataforma, int fecha, TipoGenero tipoGenero, String editor) {
