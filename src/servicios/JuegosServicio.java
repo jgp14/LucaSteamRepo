@@ -28,7 +28,7 @@ public interface JuegosServicio {
 	ListaEditor getListaEditores();
 
 	List<Juego> listarPorSigloXX() throws JuegoException;
-	
+
 	List<Juego> listarPorAnhosPares() throws JuegoException;
-	
+
 }

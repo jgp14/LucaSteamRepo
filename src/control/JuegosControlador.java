@@ -15,9 +15,11 @@ import util.LeeDatos;
 import vista.Menu;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class JuegosControlador {
 
@@ -147,6 +149,7 @@ public class JuegosControlador {
 
 		Set<String> plataformas = juegosServicio.getListaPlataformas().getPlataformas();
 		List<String> plataformasList = new ArrayList<>(plataformas);
+		Collections.sort(plataformasList);
 		System.out.println("Elige un editor de la lista: ");
 
 		for (int i = 0; i < plataformasList.size(); i++) {
