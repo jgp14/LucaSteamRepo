@@ -73,4 +73,9 @@ public class JuegosServicioImpl implements JuegosServicio {
 	public ListaEditor getListaEditores() {
 		return daoJuegos.getListaEditor();
 	}
+
+	@Override
+	public List<Juego> listarPorSigloXX() throws JuegoException {
+		return daoJuegos.listarPorSigloXX();
+	}
 }
