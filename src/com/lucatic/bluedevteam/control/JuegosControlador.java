@@ -77,36 +77,35 @@ public class JuegosControlador {
                 mostrarListaEditores(juegosServicio.getListaEditores());
 
                 break;
-
-            case 5:
-                // LISTADO JUEGOS FILTRADO POR PLATAFORMAS(CONSOLAS)
-                String plataforma = listarPlataformas();
-                juegosServicio.listarPorPlataforma(plataforma).forEach(System.out::println);
-                break;
-
-            case 6:
-                // LISTADO JUEGOS FILTRADO POR GENERO PLATAFORMA
-                mostrarLista(juegosServicio.listarGeneroPorPlataforma());
-                break;
-
-            case 7:
-                // LISTADO JUEGOS FILTRADOS POR SIGLO
-                listarPorSigloXX();
-                break;
-
-            case 8:
-                // LISTADO JUEGOS FILTRADO POR GENERO
-                TipoGenero genero = listarPorGenero();
-                mostrarLista(juegosServicio.listarPorGenero(genero));
-                break;
-            case 9:
-                listarPorAnhosPares();
-                break;
-
-            case 0:
-                continuar = false;
-                break;
-        }
+	        case 5:
+				// LISTADO JUEGOS FILTRADO POR PLATAFORMAS(CONSOLAS)
+				String plataforma = listarPlataformas();
+				juegosServicio.listarPorPlataforma(plataforma).forEach(System.out::println);
+				break;
+	
+	        case 6:
+	            // LISTADO JUEGOS FILTRADO POR GENERO PLATAFORMA
+	            mostrarLista(juegosServicio.listarGeneroPorPlataforma());
+	            break;
+	
+	        case 7:
+	            // LISTADO JUEGOS FILTRADOS POR SIGLO
+	            listarPorSigloXX();
+	            break;
+	
+	        case 8:
+	            // LISTADO JUEGOS FILTRADO POR GENERO
+	            TipoGenero genero = listarPorGenero();
+	            mostrarLista(juegosServicio.listarPorGenero(genero));
+	            break;
+	        case 9:
+	            listarPorAnhosPares();
+	            break;
+	
+	        case 0:
+	            continuar = false;
+	            break;
+	        }
 
         return continuar;
     }
