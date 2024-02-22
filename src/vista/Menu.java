@@ -16,6 +16,7 @@ public class Menu {
 		System.out.println("5-Listado de juegos (filtrado por plataforma): ");
 		System.out.println("6-Listado de juegos filtrado por género 'Plataforma'");
 		System.out.println("7-Listado de juegos (filtrado por géneros): ");
+		System.out.println("8-Listado de juegos (filtrado por siglo XX)");
 		System.out.println("0-Finalizar sesion.");
 		System.out.println("Gestion:");
 	}
