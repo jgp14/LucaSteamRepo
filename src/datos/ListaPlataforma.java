@@ -22,6 +22,10 @@ public class ListaPlataforma {
 		this.plataformas = plataformas;
 	}
 
+	public int sizePlataformas() {
+		return plataformas.size();
+	}
+
 	@Override
 	public String toString() {
 		return "ListaPlataforma{" +
