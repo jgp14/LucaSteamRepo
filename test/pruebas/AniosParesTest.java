@@ -2,18 +2,17 @@ package pruebas;
 
 import excepciones.CsvException;
 import excepciones.JuegoException;
-import model.TipoGenero;
 import org.junit.jupiter.api.Test;
 import servicios.JuegosServicio;
 import servicios.JuegosServicioImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ListarFiltrandoPorGeneroTest {
+public class AniosParesTest {
+
     private JuegosServicio juegosServicio;
 
     public void cargarDatos() {
-
         try {
             juegosServicio = new JuegosServicioImpl();
             juegosServicio.cargarDatos("vgsales.csv");
@@ -23,30 +22,25 @@ class ListarFiltrandoPorGeneroTest {
     }
 
     public void noCargar() {
-
         juegosServicio = new JuegosServicioImpl();
     }
 
     @Test
-    public void listarFiltrandoPorGeneroCargarNoExiste() {
-        cargarDatos();
-        assertThrows(IllegalArgumentException.class, () -> juegosServicio.listarPorGenero(TipoGenero.valueOf("aaa")));
+    public void listarAniosParesSinCargar() {
+
+        noCargar();
+        assertThrows(JuegoException.class, () -> juegosServicio.listarPorAnhosPares());
     }
 
     @Test
-    public void listarFiltrandoPorGeneroCargarExiste() {
+    public void listarAniosParesCargando() {
+
         try {
             cargarDatos();
-            assertTrue(!juegosServicio.listarPorGenero(TipoGenero.PLATFORM).isEmpty());
+            assertTrue(!juegosServicio.listarPorAnhosPares().isEmpty());
         } catch (JuegoException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    @Test
-    public void listarFiltrandoPoGeneroNoCargarExiste() {
-        noCargar();
-        assertThrows(JuegoException.class, () -> juegosServicio.listarPorGenero(TipoGenero.PLATFORM));
     }
 
 }

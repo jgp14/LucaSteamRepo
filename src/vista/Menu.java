@@ -3,7 +3,6 @@ package vista;
 public class Menu {
 
 	public static void mostrarMenu() {
-
 		System.out.println(" ");
 		System.out.println("ADMINISTRACION JUEGOS");
 		System.out.println(" ");
