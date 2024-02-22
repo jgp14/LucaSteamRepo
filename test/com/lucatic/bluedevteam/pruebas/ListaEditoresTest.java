@@ -6,6 +6,8 @@ import com.lucatic.bluedevteam.servicios.JuegosServicio;
 import com.lucatic.bluedevteam.servicios.JuegosServicioImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+
 /**
  * Clase de pruebas unitarias para la gestin de editores
  * 
@@ -13,11 +15,13 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author BlueDevTeam
  * @version 1.0.0
  */
-class ListarGenerosTest {
+class ListaEditoresTest {
+
 	/**
 	 * Atributo que genera el objeto que permite ejecutar pruebas
 	 */
 	private JuegosServicio juegosServicio;
+
 	/**
 	 * Se encarga de cargar datos desde un fichero para su posterior utilizacion
 	 */
@@ -29,12 +33,14 @@ class ListarGenerosTest {
 			throw new RuntimeException(e);
 		}
 	}
+
 	/**
 	 * Implementa la no carga para gestionar las pruebas segun esta accion
 	 */
 	public void noCargar() {
 		juegosServicio = new JuegosServicioImpl();
 	}
+
 	/**
 	 * Este test valida que no hay editores cargados
 	 */
@@ -43,6 +49,7 @@ class ListarGenerosTest {
 		noCargar();
 		assertEquals(juegosServicio.getListaEditores().getSizeListaEditor(), 0);
 	}
+
 	/**
 	 * Este test valida que hay editores cargados
 	 */

@@ -9,22 +9,23 @@ import com.lucatic.bluedevteam.servicios.JuegosServicioImpl;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
-* Pruebas unitarias para evaluar el comportamiento de JuegosServicioImpl al listar juegos según los años pares.
-* 
-* @since 22/02/2024
-* @author BlueDevTeam
-* @version 1.0.0
-*/
-
+ * Test para anios pares
+ *
+ * @since 22/02/2024
+ * @author BlueDevTeam
+ * @version 1.0.0
+ */
 public class AniosParesTest {
 
-    private JuegosServicio juegosServicio;
-    
     /**
-     * Carga datos desde un archivo CSV para su uso en las pruebas.
-     * Si ocurre un error al cargar el archivo, lanza una excepción de tiempo de ejecución.
+     * Servicio
      */
+    private JuegosServicio juegosServicio;
 
+
+    /**
+     * carga de datos de juegos
+     */
     public void cargarDatos() {
         try {
             juegosServicio = new JuegosServicioImpl();
@@ -35,7 +36,7 @@ public class AniosParesTest {
     }
     
     /**
-     * Inicializa JuegosServicio sin cargar datos para su uso en las pruebas.
+     * No carga los datos
      */
 
     public void noCargar() {
@@ -43,7 +44,7 @@ public class AniosParesTest {
     }
     
     /**
-     * Prueba para verificar el manejo de excepciones al intentar listar juegos según los años pares sin cargar datos.
+     * Test para comprobar si hay anios pares sin cargar listado
      */
 
     @Test
@@ -52,10 +53,9 @@ public class AniosParesTest {
         noCargar();
         assertThrows(JuegoException.class, () -> juegosServicio.listarPorAnhosPares());
     }
-    
+
     /**
-     * Prueba para verificar que se puedan listar juegos según los años pares después de cargar datos.
-     * Si ocurre un error al cargar los datos o al listar los juegos, lanza una excepción de tiempo de ejecución.
+     * Test para comprobar listado de anios pares cargando datos
      */
 
     @Test

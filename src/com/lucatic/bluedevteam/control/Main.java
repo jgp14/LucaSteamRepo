@@ -1,7 +1,7 @@
 package com.lucatic.bluedevteam.control;
 
 /**
- * Clase Main que se instancia clase JuegosControlador y se inicia.
+ * Clase principal main
  *
  * @author BlueDevTeam
  * @version 1.0.0
@@ -10,9 +10,8 @@ package com.lucatic.bluedevteam.control;
 public class Main {
 
 	/**
-	 * Clase principal main
-	 *
-	 * @param args argumentos por línea de comandos
+	 * Punto de entrada y salida al programa
+	 * @param args args línea de ordenes por consola
 	 */
 	public static void main(String[] args) {
 

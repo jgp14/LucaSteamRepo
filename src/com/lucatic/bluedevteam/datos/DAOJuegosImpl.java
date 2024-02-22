@@ -173,6 +173,7 @@ public class DAOJuegosImpl implements DAOJuegos {
             count++;
         } else {
             LOGGER.warn("Ya has cargado el csv anteriormente");
+            throw new CsvException("Ya se ha cargado antes el csv");
         }
 
     }

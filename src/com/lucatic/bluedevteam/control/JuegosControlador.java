@@ -16,14 +16,12 @@ import com.lucatic.bluedevteam.vista.Menu;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Set;
 
 /**
- * Clase JuegoControlador que se instancia de en la main y carga el metodo de
- * inicio que aparece un meotodo y se muestra una seleccion de opciones.
+ * Clase controladora llamada desde el main con menú prnicipal y opciones
  * 
  * @author BlueDevTeam
  * @version 1.0.0
@@ -32,19 +30,17 @@ import java.util.Set;
 public class JuegosControlador {
 
 	/**
-	 * Logger que registra en un archivo los errores y excepciones de
-	 * JuegosControlador
+	 * Logger log4j2
 	 */
 	private static final Logger LOGGER = LogManager.getLogger(JuegosControlador.class);
 
 	/**
-	 * Clase que permite utilizar los metodos del servicio.
+	 * Instancia del servicio
 	 */
 	private JuegosServicio juegosServicio = new JuegosServicioImpl();
 
 	/**
-	 * Inicia el programa, se lanza en la main. Empieza un bucle que muestra un menu
-	 * de opciones y un input de opcion pasada por teclado.
+	 * Método que incializa el programa
 	 */
 	public void inicio() {
 
@@ -74,15 +70,11 @@ public class JuegosControlador {
 	}
 
 	/**
-	 * Switch-case que segun el entero introducido por teclado pasa por una o otra
-	 * opcion de las funcionalidades del programa y controlador..
-	 * 
-	 * @return Devuelve un boolean que indica si continua en el bucle y
-	 *         seleccionando opciones.
-	 * @throws JuegoException,         se lanza cuando se produce una excepcion en
-	 *                                 los metodos del servicio.
-	 * @throws InputMismatchException, salta cuando se introduce por consola un
-	 *                                 valor invalido, en este caso un no entero.
+	 * Selecciona las opciones del programa
+	 *
+	 * @return false si salir o true si no
+	 * @throws JuegoException Si hay error en la gestión del juego
+	 * @throws InputMismatchException Errores de la clase Scanner en la lectura de datos por consola
 	 */
 	public boolean seleccionOpciones() throws JuegoException, InputMismatchException {
 
@@ -111,7 +103,7 @@ public class JuegosControlador {
 			break;
 		case 5:
 			// LISTADO JUEGOS FILTRADO POR PLATAFORMAS(CONSOLAS)
-			String plataforma = listarPlataformas();
+			String plataforma = obtenerPlataforma();
 			juegosServicio.listarPorPlataforma(plataforma).forEach(System.out::println);
 			break;
 
@@ -127,7 +119,7 @@ public class JuegosControlador {
 
 		case 8:
 			// LISTADO JUEGOS FILTRADO POR GENERO
-			TipoGenero genero = listarPorGenero();
+			TipoGenero genero = seleccionaPorGenero();
 			mostrarLista(juegosServicio.listarPorGenero(genero));
 			break;
 		case 9:
@@ -144,19 +136,16 @@ public class JuegosControlador {
 	}
 
 	/**
-	 * Recoge por consola valores de campos que despues se meten en un objeto nuevo
-	 * de clase Juego. Tras completar todos los atributos se llama al metodo
-	 * altaJuego de servicio.
-	 * 
-	 * @throws InputMismatchException, salta cuando se introduce por consola un
-	 *                                 valor invalido, en este caso un no entero.
-	 * @throws JuegoException,         indica que no se dio de alta correctamente.
+	 * Método que da de alta un juego
+	 *
+	 * @throws InputMismatchException Excepción propagada en la lecutra de datos por consola
+	 * @throws JuegoException Excepción programada en caso de error en la gestión del juego
 	 */
 	public void altaJuego() throws InputMismatchException, JuegoException {
 
 		Juego juego = new Juego();
 
-		int ranking = LeeDatos.leerInt("Introdue ranking");
+		int ranking = LeeDatos.leerInt("Introduce ranking");
 
 		String nombre = LeeDatos.leerString("Intrdoduce el nombre");
 		String plataforma = LeeDatos.leerString("Introduce la plataforma");
@@ -174,12 +163,11 @@ public class JuegosControlador {
 		juegosServicio.altaJuego(juego);
 	}
 
+
 	/**
-	 * Muestra por consola la lista linea a linea de todos los Editores. Ordenados
-	 * alfabeticamente.
-	 * 
-	 * @param listaEditores, es un obejto de tipo ListaEditor que contine un Set con
-	 *                       todos los editores.
+	 * Mostrar lista editores
+	 *
+	 * @param listaEditores Objeto listaEditor que contiene los editores
 	 */
 	public static void mostrarListaEditores(ListaEditor listaEditores) {
 		List<String> editoresSorted = new ArrayList<>(listaEditores.getEditores());
@@ -187,26 +175,22 @@ public class JuegosControlador {
 		editoresSorted.forEach(System.out::println);
 	}
 
+
 	/**
-	 * Muestra e imprime consola la lista de juegos que previamente se paso como
-	 * parametro.
-	 * 
-	 * @param juegos, es una lista de juegos que despues se imprime por consola
-	 *                linea a linea.
+	 * Se encarga de mostrar todos los juegos almacenados
 	 *
+	 * @param juegos Lista que contiene todos los juegos almacenados
 	 */
 	public static void mostrarLista(List<Juego> juegos) {
 		juegos.forEach(System.out::println);
 	}
 
 	/**
-	 * Muestra por consola una lista de juegos que son todas de un mismo tipo de
-	 * plataformas ordenadas.
-	 * 
-	 * @return devuelve un string con el valor de la plataforma o lista
-	 *         seleccionada.
+	 * Seleccionar plataforma
+	 *
+	 * @return Devuelve la plataforma seleccionada
 	 */
-	public String listarPlataformas() {
+	public String obtenerPlataforma() {
 
 		Set<String> plataformas = juegosServicio.getListaPlataformas().getPlataformas();
 		List<String> plataformasList = new ArrayList<>(plataformas);
@@ -226,29 +210,23 @@ public class JuegosControlador {
 	}
 
 	/**
-	 * Listado de juegos ordenados que esten comprendidos en el siglo XX
-	 * 
-	 * @throws JuegoException, se lanza cuando no se produce una excepcion en el
-	 *                         metodo listarPorSigloXX y por tanto devuelve bien la
-	 *                         lista
+	 * Listar juegos por siglo xx
+	 *
+	 * @throws JuegoException ERror si no hay juegos del siglo xx o lista vacía
 	 */
 	public void listarPorSigloXX() throws JuegoException {
+
 		List<Juego> juegosSigloXX = juegosServicio.listarPorSigloXX();
-		Collections.sort(juegosSigloXX, Comparator.comparingInt(Juego::getFecha));
-		;
-		for (Juego sigloXX : juegosSigloXX) {
-			System.out.println(sigloXX);
-		}
+
+		juegosSigloXX.forEach(System.out::println);
 	}
 
 	/**
-	 * Muestra un menu de opciones con los distintos tipos de generos y despues pide
-	 * por consola un codigo y muestra la lista de juegos que comparten genero.
-	 * 
-	 * @return , devuelve un enum de tipo genero que servira despues para listar
-	 *         juegos por genero
+	 * Obteiene un genero determinado
+	 *
+	 * @return El tipo de genero enumerado
 	 */
-	public TipoGenero listarPorGenero() {
+	public TipoGenero seleccionaPorGenero() {
 		for (int i = 0; i < TipoGenero.values().length; i++) {
 			System.out.println((i + 1) + " - " + TipoGenero.values()[i]);
 		}
@@ -261,10 +239,9 @@ public class JuegosControlador {
 	}
 
 	/**
-	 * Muestra la lista de juegos cuyo año de lanzamiento fue en un año par.
-	 * 
-	 * @throws JuegoException, indica que se produjo un error al ejecutar el metodo
-	 *                         listarPorAnhosPares del servicio
+	 * Se encarga de listar los juegos de los años pares
+	 *
+	 * @throws JuegoException Error si nos hay juegos de año spares o lista vacía
 	 */
 	public void listarPorAnhosPares() throws JuegoException {
 		List<Juego> juegosAnhosPares = juegosServicio.listarPorAnhosPares();

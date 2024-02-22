@@ -10,8 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 /**
- * Clase de Test que comprueba los metodos del servicio relacionados con listar
- * los juegos del siglo XX
+ * Test para comprobar juegos siglo xx
  *
  * @since 22/02/2024
  * @author BlueDevTeam
@@ -20,13 +19,12 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ListarSigoXXTest {
 
 	/**
-	 * Atributo que declara el juegoServicio para testear los metodos
+	 * Instanciar servicio
 	 */
 	private JuegosServicio juegosServicio;
 
 	/**
-	 * Carga los datos del fichero .csv y sino devuelve una RuntimeException. Sirve
-	 * para contemplar los casos de datos cargados correctamente.
+	 * Cargar datos
 	 */
 	public void cargarDatos() {
 
@@ -39,8 +37,7 @@ public class ListarSigoXXTest {
 	}
 
 	/**
-	 * Instancia el atributo juegosServicio con la implementacion JuegosServicioImpl
-	 * para contemplar los escenarios en donde los datos existen pero estan vacios.
+	 * no carga datos
 	 */
 	public void noCargar() {
 
@@ -48,8 +45,7 @@ public class ListarSigoXXTest {
 	}
 
 	/**
-	 * Comprueba que el metodo listarPorSigloXX lanza una excepcion si no se han
-	 * cargado los datos
+	 * Test para listar juegos siglo xx sin cargar datos
 	 */
 	@Test
 	public void ListarSigloXXSinCargar() {
@@ -60,7 +56,7 @@ public class ListarSigoXXTest {
 	}
 
 	/**
-	 * Comprueba que el metodo listarPorSigloXX NO devuelve una lista vacia.
+	 * Test para listar juegos siglo xx cargando datos
 	 */
 	@Test
 	public void listarSigloXXCargando() {

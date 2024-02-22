@@ -26,6 +26,7 @@ public class ListaEditor {
 
     /**
      * Añade el nombre de un editor a la lista unica de editores
+     *
      * @param nombreEditor Nombre del editor a aniadir
      */
     public void anadirEditor(String nombreEditor) {
