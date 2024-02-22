@@ -28,8 +28,6 @@ public class ListaPlataforma {
 
 	@Override
 	public String toString() {
-		return "ListaPlataforma{" +
-				"plataformas=" + plataformas +
-				'}';
+		return "ListaPlataforma{" + "plataformas=" + plataformas + '}';
 	}
 }

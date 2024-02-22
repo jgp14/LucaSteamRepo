@@ -21,36 +21,36 @@ import java.util.Set;
 
 public class JuegosControlador {
 
-    private static final Logger LOGGER = LogManager.getLogger(JuegosControlador.class);
+	private static final Logger LOGGER = LogManager.getLogger(JuegosControlador.class);
 
-    JuegosServicio juegosServicio = new JuegosServicioImpl();
+	JuegosServicio juegosServicio = new JuegosServicioImpl();
 
-    public void inicio() {
+	public void inicio() {
 
-        boolean salirGeneral = false;
+		boolean salirGeneral = false;
 
-        while (!salirGeneral) {
+		while (!salirGeneral) {
 
-            try {
-                boolean seguir = true;
+			try {
+				boolean seguir = true;
 
-                do {
-                    Menu.mostrarMenu();
-                    seguir = this.seleccionOpciones();
-                } while (seguir);
+				do {
+					Menu.mostrarMenu();
+					seguir = this.seleccionOpciones();
+				} while (seguir);
 
-                LOGGER.info("Fin de la sesión");
-                salirGeneral = true;
+				LOGGER.info("Fin de la sesión");
+				salirGeneral = true;
 
-            } catch (JuegoException e) {
-                LOGGER.error("Error en la aplicacion: ", e);
-            } catch (InputMismatchException e) {
-                LOGGER.error("Error introduciendo datos", e);
-            }
-        }
-    }
+			} catch (JuegoException e) {
+				LOGGER.error("Error en la aplicacion: ", e);
+			} catch (InputMismatchException e) {
+				LOGGER.error("Error introduciendo datos", e);
+			}
+		}
+	}
 
-    public boolean seleccionOpciones() throws JuegoException, InputMismatchException {
+	public boolean seleccionOpciones() throws JuegoException, InputMismatchException {
 
         boolean continuar = true;
 
@@ -90,11 +90,19 @@ public class JuegosControlador {
 
             case 7:
                 // LISTADO JUEGOS FILTRADO POR GENERO
+<<<<<<< HEAD
             	var genero = listarPorGenero();
             	mostrarLista(juegosServicio.listarPorGenero(genero));    	
+=======
+            	
+
+>>>>>>> 77cb7b616135a7d0cd4a7f2885cb22de97311382
                 break;
  
             case 8:
+            	// LISTADO JUEGOS FILTRADOS POR SIGLO
+            	listarPorSigloXX();
+            	
 
                 break;
 
@@ -105,66 +113,68 @@ public class JuegosControlador {
 
         return continuar;
     }
-    
 
-    public void altaJuego() throws InputMismatchException, JuegoException {
+	public void altaJuego() throws InputMismatchException, JuegoException {
 
-        Juego juego = new Juego();
+		Juego juego = new Juego();
 
-        int ranking = LeeDatos.leerInt("Introdue ranking");
+		int ranking = LeeDatos.leerInt("Introdue ranking");
 
-        String nombre = LeeDatos.leerString("Intrdoduce el nombre");
-        String plataforma = LeeDatos.leerString("Introduce la plataforma");
-        int anioFecha = LeeDatos.leerInt("Intoduce fecha");
-        TipoGenero tipoGenero = TipoGenero.valueOf(LeeDatos.leerString("Introduce tipo genero"));
-        String editor = LeeDatos.leerString("Introduce el editor");
+		String nombre = LeeDatos.leerString("Intrdoduce el nombre");
+		String plataforma = LeeDatos.leerString("Introduce la plataforma");
+		int anioFecha = LeeDatos.leerInt("Intoduce fecha");
+		TipoGenero tipoGenero = TipoGenero.valueOf(LeeDatos.leerString("Introduce tipo genero"));
+		String editor = LeeDatos.leerString("Introduce el editor");
 
-        juego.setRanking(ranking);
-        juego.setNombre(nombre);
-        juego.setPlataforma(plataforma);
-        juego.setFecha(anioFecha);
-        juego.setTipoGenero(tipoGenero);
-        juego.setEditor(editor);
+		juego.setRanking(ranking);
+		juego.setNombre(nombre);
+		juego.setPlataforma(plataforma);
+		juego.setFecha(anioFecha);
+		juego.setTipoGenero(tipoGenero);
+		juego.setEditor(editor);
 
-        juegosServicio.altaJuego(juego);
-    }
+		juegosServicio.altaJuego(juego);
+	}
 
-
-    public static void mostrarListaEditores(ListaEditor listaEditores) {
+	public static void mostrarListaEditores(ListaEditor listaEditores) {
 		// TODO Auto-generated method stub
-    	
-    	listaEditores.getEditores().forEach(System.out::println);
-		
+
+		listaEditores.getEditores().forEach(System.out::println);
+
 	}
 
 	public static void mostrarLista(List<Juego> juegos) {
 
-        juegos.forEach(System.out::println);
-    }
-    
-    public String listarPlataformas() throws JuegoException{
+		juegos.forEach(System.out::println);
+	}
 
-    	Set<String> plataformas = juegosServicio.getListaPlataformas().getPlataformas();
-    	List<String> plataformasList = new ArrayList<>(plataformas);
-    	System.out.println("Elige un editor de la lista: ");
+	public String listarPlataformas() throws JuegoException {
 
-    	for(int i = 0; i < plataformasList.size(); i++) {
-    		System.out.println((i+1)+" - "+plataformasList.get(i));
-    	}
-    	int n = 0;
-    	do {
-    		System.out.print("Dime codigo de plataforma: ");
-        	n = LeeDatos.leerInt();
-    	}while(n <= 0 || n > plataformasList.size());
+		Set<String> plataformas = juegosServicio.getListaPlataformas().getPlataformas();
+		List<String> plataformasList = new ArrayList<>(plataformas);
+		System.out.println("Elige un editor de la lista: ");
 
-    	return plataformasList.get(n-1);
-    }
-//    
-//    public listarPorSigloXX() throws JuegoException{
-//    	juegosServicio.listarPorSigloXX().forEach(System.out::println);
-//    }
-    
-    public TipoGenero listarPorGenero() throws JuegoException{
+		for (int i = 0; i < plataformasList.size(); i++) {
+			System.out.println((i + 1) + " - " + plataformasList.get(i));
+		}
+		int n = 0;
+		do {
+			System.out.print("Dime codigo de plataforma: ");
+			n = LeeDatos.leerInt();
+		} while (n <= 0 || n > plataformasList.size());
+
+		return plataformasList.get(n - 1);
+	}
+
+	public void listarPorSigloXX() throws JuegoException {
+		List<Juego> juegosSigloXX = juegosServicio.listarPorSigloXX();
+		for (int i = 0; i < juegosSigloXX.size(); i++) {
+			System.out.println(juegosSigloXX.get(i));
+		}
+
+	}
+
+	public TipoGenero listarPorGenero() throws JuegoException{
     	for(int i = 0; i < TipoGenero.values().length; i++) {
     		System.out.println((i+1)+" - "+TipoGenero.values()[i]);
     	}
@@ -174,6 +184,6 @@ public class JuegosControlador {
         	n = LeeDatos.leerInt();
     	}while(n <= 0 || n > TipoGenero.values().length);
     	return TipoGenero.values()[n-1];
-    }
+    
 
 }

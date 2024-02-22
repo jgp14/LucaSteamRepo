@@ -7,7 +7,6 @@ public class ListaEditor {
 
 	private Set<String> editores = new HashSet<>();
 
-
 	public ListaEditor() {
 	}
 
