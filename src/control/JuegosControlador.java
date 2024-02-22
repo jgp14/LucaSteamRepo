@@ -73,6 +73,7 @@ public class JuegosControlador {
             case 4:
                 // LISTADO EDITORES
                 break;
+                
             case 5:
                 // LISTADO JUEGOS FILTRADO POR PLATAFORMAS(CONSOLAS)
                	String genero = listarPlataformas();
