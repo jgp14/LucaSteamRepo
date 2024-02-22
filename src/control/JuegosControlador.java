@@ -72,12 +72,15 @@ public class JuegosControlador {
 
             case 4:
                 // LISTADO EDITORES
+				mostrarListaEditores(juegosServicio.getListaEditores());
+
                 break;
                 
             case 5:
                 // LISTADO JUEGOS FILTRADO POR PLATAFORMAS(CONSOLAS)
                	String genero = listarPlataformas();
                 juegosServicio.listarPorPlataforma(genero).forEach(System.out::println);
+
                 break;
 
             case 6:
