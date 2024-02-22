@@ -9,6 +9,10 @@ package vista;
  */
 public class Menu {
 
+	/**
+	 * Muestra por consola un menu indexado de opciones para que 
+	 * el usuario pueda introducir la opcion que desee.
+	 */
 	public static void mostrarMenu() {
 		System.out.println(" ");
 		System.out.println("ADMINISTRACION JUEGOS");

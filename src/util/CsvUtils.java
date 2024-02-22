@@ -17,6 +17,7 @@ import java.util.List;
 
 /**
  * Clase de utilidades para operar con archivos de tipo "CSV".
+ * 
  * @since 22/02/2024
  * @author BlueDevTeam
  * @version 1.0.0
@@ -24,60 +25,65 @@ import java.util.List;
 
 public class CsvUtils {
 
+	/**
+	 * Logger que registra en un archivo los errores y excepciones de
+	 * JuegosControlador
+	 */
 	private static final Logger LOGGER = LogManager.getLogger(CsvUtils.class);
-	
+
 	/**
 	 * Convierte datos de un archivo CSV en una lista de objetos "Juego".
 	 * 
 	 * @param fichero Ruta del archivo CSV.
 	 * @return lista de objetos "Juego".
-	 * @throws CsvException lanza error si ocurre un error obteniendo los datos del fichero o si ocurre un error procesando los datos del fichero.
+	 * @throws CsvException lanza error si ocurre un error obteniendo los datos del
+	 *                      fichero o si ocurre un error procesando los datos del
+	 *                      fichero.
 	 */
 
+	public static List<Juego> deCsvAList(String fichero) throws CsvException {
 
-    public static List<Juego> deCsvAList(String fichero) throws CsvException {
+		List<Juego> lista = new ArrayList<>();
 
-        List<Juego> lista = new ArrayList<>();
+		try (Reader reader = new FileReader(fichero); CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT)) {
 
-        try (Reader reader = new FileReader(fichero); CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT)) {
+			int i = 0;
 
-            int i = 0;
+			for (CSVRecord csvRecord : csvParser) {
 
-            for (CSVRecord csvRecord : csvParser) {
+				if (i == 0) {
+					i++;
+					continue;
+				}
 
-                if (i == 0) {
-                    i++;
-                    continue;
-                }
+				String genero = csvRecord.get(4);
 
-                String genero = csvRecord.get(4);
+				if (genero.equalsIgnoreCase("Role-Playing"))
+					genero = "ROLEPLAYING";
 
-                if (genero.equalsIgnoreCase("Role-Playing"))
-                    genero = "ROLEPLAYING";
+				String anio = csvRecord.get(3);
 
-                String anio = csvRecord.get(3);
+				if (anio.equalsIgnoreCase("N/A"))
+					anio = "0";
 
-                if (anio.equalsIgnoreCase("N/A"))
-                    anio = "0";
+				lista.add(new Juego(Integer.parseInt(csvRecord.get(0)), // ranking
+						csvRecord.get(1), // nombre
+						csvRecord.get(2), // plataforma
+						Integer.parseInt(anio), // Año
+						TipoGenero.valueOf(genero.toUpperCase()), // tipo genero
+						csvRecord.get(5) // editor
+				));
+			}
 
-                lista.add(new Juego(Integer.parseInt(csvRecord.get(0)), // ranking
-                        csvRecord.get(1), // nombre
-                        csvRecord.get(2), // plataforma
-                        Integer.parseInt(anio), // Año
-                        TipoGenero.valueOf(genero.toUpperCase()), // tipo genero
-                        csvRecord.get(5) // editor
-                ));
-            }
+			return lista;
 
-            return lista;
+		} catch (IOException e) {
+			LOGGER.error("Error obteniendo datos del fichero csv", e);
+			throw new CsvException("Error obteniendo datos del fichero csv", e);
 
-        } catch (IOException e) {
-            LOGGER.error("Error obteniendo datos del fichero csv", e);
-            throw new CsvException("Error obteniendo datos del fichero csv", e);
-
-        } catch (NumberFormatException e) {
-            LOGGER.error("Error parseando datos en las columnas del csv a atributos de Juego", e);
-            throw new CsvException("Error parseando datos en las columnas del csv a atributos", e);
-        }
-    }
+		} catch (NumberFormatException e) {
+			LOGGER.error("Error parseando datos en las columnas del csv a atributos de Juego", e);
+			throw new CsvException("Error parseando datos en las columnas del csv a atributos", e);
+		}
+	}
 }

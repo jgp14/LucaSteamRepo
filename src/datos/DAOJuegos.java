@@ -7,28 +7,27 @@ import excepciones.JuegoException;
 import model.Juego;
 import model.TipoGenero;
 
-//
 public interface DAOJuegos {
 
-    void cargarDatos(String nombreFichero) throws CsvException;
+	void cargarDatos(String nombreFichero) throws CsvException;
 
-    boolean existeJuego(Juego juego);
+	boolean existeJuego(Juego juego);
 
-    void altaJuego(Juego juego) throws JuegoException;
+	void altaJuego(Juego juego) throws JuegoException;
 
-    List<Juego> listarPorGeneros(TipoGenero tipoGenero) throws JuegoException;
+	public List<Juego> listarPorGeneros(TipoGenero tipoGenero) throws JuegoException;
 
-    List<Juego> listarJuegos() throws JuegoException;
+	public List<Juego> listarJuegos() throws JuegoException;
 
-    List<Juego> listarPorPlataforma(String nombrePlataforma) throws JuegoException;
+	public List<Juego> listarPorPlataforma(String nombrePlataforma) throws JuegoException;
 
-    ListaPlataforma getListaPlataforma();
+	public ListaPlataforma getListaPlataforma();
 
-    ListaEditor getListaEditor();
+	public ListaEditor getListaEditor();
 
-    List<Juego> getJuegos();
+	public List<Juego> getJuegos();
 
-    List<Juego> listarPorSigloXX() throws JuegoException;
+	public List<Juego> listarPorSigloXX() throws JuegoException;
 
-    List<Juego> listarPorAnhosPares() throws JuegoException;
+	public List<Juego> listarPorAnhosPares() throws JuegoException;
 }
