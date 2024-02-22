@@ -14,4 +14,5 @@ public interface DAOJuegos {
 	void altaJuego(Juego juego) throws JuegoException;
 	List<Juego> listarPorGeneros(TipoGenero tipoGenero) throws JuegoException;
 	List<Juego> listarJuegos() throws JuegoException;
+	List<Juego> listarPorPlataforma(String nombrePlataforma)throws JuegoException;
 }

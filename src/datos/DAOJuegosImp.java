@@ -134,7 +134,7 @@ public class DAOJuegosImp implements DAOJuegos {
 			throw new JuegoException(msg);
 		}
 	}
-	public List<Juego> listarPorPlataforma(String nombrePlataforma){
+	public List<Juego> listarPorPlataforma(String nombrePlataforma)throws JuegoException{
 
 		List<Juego> listaPorPlataforma = new ArrayList<Juego>();
 		for(int i=0;i<juegos.size();i++) {
