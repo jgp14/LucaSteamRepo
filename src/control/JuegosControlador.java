@@ -95,7 +95,7 @@ public class JuegosControlador {
                 
             case 8:
                 // LISTADO JUEGOS FILTRADO POR GENERO
-				var genero = listarPorGenero();
+				TipoGenero genero = listarPorGenero();
 				mostrarLista(juegosServicio.listarPorGenero(genero));
 				break;
  
