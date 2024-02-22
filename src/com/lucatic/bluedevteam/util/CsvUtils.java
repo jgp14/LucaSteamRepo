@@ -21,7 +21,6 @@ import java.util.List;
  * @author BlueDevTeam
  * @version 1.0.0
  */
-
 public class CsvUtils {
 
 	private static final Logger LOGGER = LogManager.getLogger(CsvUtils.class);
@@ -33,8 +32,6 @@ public class CsvUtils {
 	 * @return lista de objetos "Juego".
 	 * @throws CsvException lanza error si ocurre un error obteniendo los datos del fichero o si ocurre un error procesando los datos del fichero.
 	 */
-
-
     public static List<Juego> deCsvAList(String fichero) throws CsvException {
 
         List<Juego> lista = new ArrayList<>();
