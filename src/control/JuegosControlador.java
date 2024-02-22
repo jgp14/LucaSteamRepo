@@ -91,7 +91,7 @@ public class JuegosControlador {
                 break;
 
             case 4:
-                // LISTADO EDITORES
+                // LISTADO EDITORES.
             	mostrarListaEditores(juegosServicio.getListaEditores());
 
 
