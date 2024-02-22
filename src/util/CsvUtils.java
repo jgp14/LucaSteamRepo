@@ -15,9 +15,24 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase de utilidades para operar con archivos de tipo "CSV".
+ * @since 22/02/2024
+ * @author BlueDevTeam
+ * @version 1.0.0
+ */
+
 public class CsvUtils {
 
 	private static final Logger LOGGER = LogManager.getLogger(CsvUtils.class);
+	
+	/**
+	 * Convierte datos de un archivo CSV en una lista de objetos "Juego".
+	 * 
+	 * @param fichero Ruta del archivo CSV.
+	 * @return lista de objetos "Juego".
+	 * @throws CsvException lanza error si ocurre un error obteniendo los datos del fichero o si ocurre un error procesando los datos del fichero.
+	 */
 
 	public static List<Juego> deCsvAList(String fichero) throws CsvException {
 
