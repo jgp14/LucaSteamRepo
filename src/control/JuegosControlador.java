@@ -90,13 +90,10 @@ public class JuegosControlador {
 
             case 7:
                 // LISTADO JUEGOS FILTRADO POR GENERO
-<<<<<<< HEAD
-            	var genero = listarPorGenero();
-            	mostrarLista(juegosServicio.listarPorGenero(genero));    	
-=======
-            	
 
->>>>>>> 77cb7b616135a7d0cd4a7f2885cb22de97311382
+            	TipoGenero genero = listarPorGenero();
+            	mostrarLista(juegosServicio.listarPorGenero(genero));
+
                 break;
  
             case 8:
@@ -139,7 +136,11 @@ public class JuegosControlador {
 	public static void mostrarListaEditores(ListaEditor listaEditores) {
 		// TODO Auto-generated method stub
 
-		listaEditores.getEditores().forEach(System.out::println);
+		if (listaEditores.getSizeListaEditor() != 0) {
+			listaEditores.getEditores().forEach(System.out::println);
+		} else {
+			LOGGER.info("No hay editores dados de alta");
+		}
 
 	}
 
@@ -174,16 +175,16 @@ public class JuegosControlador {
 
 	}
 
-	public TipoGenero listarPorGenero() throws JuegoException{
-    	for(int i = 0; i < TipoGenero.values().length; i++) {
-    		System.out.println((i+1)+" - "+TipoGenero.values()[i]);
-    	}
-    	int n = 0;
-    	do {
-    		System.out.print("Dime el codigo de genero de videojuego: ");
-        	n = LeeDatos.leerInt();
-    	}while(n <= 0 || n > TipoGenero.values().length);
-    	return TipoGenero.values()[n-1];
-    
+	public TipoGenero listarPorGenero() throws JuegoException {
+		for (int i = 0; i < TipoGenero.values().length; i++) {
+			System.out.println((i + 1) + " - " + TipoGenero.values()[i]);
+		}
+		int n = 0;
+		do {
+			System.out.print("Dime el codigo de genero de videojuego: ");
+			n = LeeDatos.leerInt();
+		} while (n <= 0 || n > TipoGenero.values().length);
+		return TipoGenero.values()[n - 1];
 
+	}
 }
