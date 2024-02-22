@@ -29,11 +29,12 @@ class ListarGenerosTest {
     @Test
     public void ListaEditoresSinCargar() {
         noCargar();
-        assertEquals(juegosServicio.getListaEditores().sizeEditores(), 0);
+        assertEquals(juegosServicio.getListaEditores().getSizeListaEditor(), 0);
     }
 
+    @Test
     public void ListarEditoresCargando() {
         cargarDatos();
-        assert
+        assertTrue(juegosServicio.getListaEditores().getSizeListaEditor() > 0);
     }
 }
