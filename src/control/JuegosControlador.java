@@ -164,7 +164,7 @@ public class JuegosControlador {
     	return plataformasList.get(n-1);
     }
     
-    public static void listarPorSigloXX() {
+    public void listarPorSigloXX() throws JuegoException {
     	List<Juego> juegosSigloXX = JuegosServicioImpl.listarPorSigloXX();
     	for(int i = 0; i < juegosSigloXX.size(); i++) {
     		System.out.println(juegosSigloXX.get(i));
