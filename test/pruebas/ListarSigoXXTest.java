@@ -40,7 +40,7 @@ public class ListarSigoXXTest {
 
         try {
             cargarDatos();
-            assertTrue(!juegosServicio.listarPorSigloXX().isEmpty());
+            assertFalse(juegosServicio.listarPorSigloXX().isEmpty());
         } catch (JuegoException e) {
             throw new RuntimeException(e);
         }
