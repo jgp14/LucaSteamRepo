@@ -134,4 +134,22 @@ public class DAOJuegosImp implements DAOJuegos {
 			throw new JuegoException(msg);
 		}
 	}
+	public List<Juego> listarPorPlataforma(String nombrePlataforma){
+
+		List<Juego> listaPorPlataforma = new ArrayList<Juego>();
+		for(int i=0;i<juegos.size();i++) {
+			if(juegos.get(i).getPlataforma().equalsIgnoreCase(nombrePlataforma)) {
+				listaPorPlataforma.add(juegos.get(i));
+			}
+		}
+		if (juegos.size() == 0) {
+			String msg = "Lista de juegos es  vacia";
+			LOGGER.warn(msg);
+			throw new JuegoException(msg);
+		} else if (listaPorPlataforma.size() == 0) {
+			String msg = "No hay juegos en ese genero";
+			LOGGER.warn(msg);
+			throw new JuegoException(msg);
+		}
+	}
 }
