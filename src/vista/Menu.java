@@ -3,7 +3,6 @@ package vista;
 public class Menu {
 
 	public static void mostrarMenu() {
-
 		System.out.println(" ");
 		System.out.println("ADMINISTRACION JUEGOS");
 		System.out.println(" ");
@@ -17,6 +16,7 @@ public class Menu {
 		System.out.println("6-Listado de juegos filtrado por género 'Plataforma'");
 		System.out.println("7-Listado de juegos filtrado por siglo XX");
 		System.out.println("8-Listado de juegos filtrado por género: ");
+		System.out.println("9-Listado de juegos de años pares: ");
 		System.out.println("0-Finalizar sesion.");
 		System.out.println("Gestion:");
 	}

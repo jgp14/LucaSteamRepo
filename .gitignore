@@ -6,3 +6,12 @@
 .springBeans
 .sts4-cache
 bin/
+out/
+log4j-api-2.22.1.jar
+log4j-core-2.22.1.jar
+Juegos.iml
+commons-csv-1.10.0.jar
+.gitignore
+logs/
+lib/
+.idea/

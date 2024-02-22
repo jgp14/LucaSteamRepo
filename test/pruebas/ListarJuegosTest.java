@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ListarJuegosTest {
 
-    private JuegosServicio servicio = new JuegosServicioImpl();
+    private final JuegosServicio servicio = new JuegosServicioImpl();
 
     @Test
     public void listarJuegosSinCargarDatos() {
@@ -23,7 +23,7 @@ public class ListarJuegosTest {
     @Test
     public void listarJuegosCargarDatos() {
 
-        List<Juego> juegos = null;
+        List<Juego> juegos;
         try {
             servicio.cargarDatos("vgsales.csv");
             juegos = servicio.listarJuegos();

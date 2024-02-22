@@ -10,6 +10,7 @@ import java.util.Scanner;
  * @version 1.0.0
  */
 
+<<<<<<< HEAD
 public class LeeDatos {
 	
 	/**
@@ -53,10 +54,25 @@ public class LeeDatos {
 	 * @return El número entero ingresado.
 	 * @throws InputMismatchException si el tipo de dato de entrada es diferente al esperado.
 	 */
+=======
+    public static String leerString() throws InputMismatchException {
+        Scanner lector = new Scanner(System.in);
+        return lector.nextLine();
+    }
 
-	public static int leerInt(String mensaje) throws InputMismatchException {
-		System.out.println(mensaje);
-		return leerInt();
-	}
+    public static String leerString(String mensaje) {
+        System.out.println(mensaje);
+        return leerString();
+    }
+
+    public static int leerInt() throws InputMismatchException {
+        return new Scanner(System.in).nextInt();
+    }
+>>>>>>> f0c139b17809e1df31dc285d2a10147a254a14b4
+
+    public static int leerInt(String mensaje) throws InputMismatchException {
+        System.out.println(mensaje);
+        return leerInt();
+    }
 
 }

@@ -1,7 +1,6 @@
 package model;
 
 public enum TipoGenero {
-
     SPORTS,
     PLATFORM,
     RACING,
@@ -14,5 +13,4 @@ public enum TipoGenero {
     FIGHTING,
     ADVENTURE,
     STRATEGY
-
 }
