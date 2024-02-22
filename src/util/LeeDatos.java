@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class LeeDatos {
 
-    public static String leerString() throws InputMismatchException {
+    public static String leerString() {
         Scanner lector = new Scanner(System.in);
         return lector.nextLine();
     }

@@ -13,10 +13,26 @@ import model.TipoGenero;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+
+/**
+ * Implementación del servicio con la lógica de negocio
+ *
+ * @author BlueDevTeam
+ * @version 1.0.0
+ * @since 22-02-2024
+ */
 public class JuegosServicioImpl implements JuegosServicio {
 
+    /**
+     * LOGGER log4j2
+     *
+     */
     private static final Logger LOGGER = LogManager.getLogger(JuegosServicioImpl.class);
 
+    /**
+     * capa DAO juegos
+     *
+     */
     DAOJuegos daoJuegos = new DAOJuegosImpl();
 
     @Override
