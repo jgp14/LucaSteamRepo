@@ -160,9 +160,5 @@ public class JuegosControlador {
 
     	return plataformasList.get(n-1);
     }
-    
-    public listarPorSigloXX() {
-    	juegosServicio.listarPorSigloXX().forEach(System.out::println);
-    }
 
 }
