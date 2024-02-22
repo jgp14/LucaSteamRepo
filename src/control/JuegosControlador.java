@@ -146,17 +146,21 @@ public class JuegosControlador {
     }
     
     public String listarPlataformas() {
+
     	Set<String> plataformas = juegosServicio.getListaPlataformas().getPlataformas();
     	List<String> plataformasList = new ArrayList<>(plataformas);
     	System.out.println("Elige un editor de la lista: ");
+
     	for(int i = 0; i < plataformasList.size(); i++) {
     		System.out.println((i+1)+" - "+plataformasList.get(i));
     	}
     	int n = 0;
+
     	do {
     		System.out.print("Dime codigo de plataforma: ");
         	n = LeeDatos.leerInt();
-    	}while(n <= 0 || n > plataformasList.size());    	
+    	}while(n <= 0 || n > plataformasList.size());
+
     	return plataformasList.get(n-1);
     }
     
