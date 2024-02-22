@@ -87,25 +87,18 @@ public class JuegosControlador {
                 // LISTADO JUEGOS FILTRADO POR GENERO PLATAFORMA
                 mostrarLista(juegosServicio.listarGeneroPorPlataforma());
                 break;
-
+            
             case 7:
-                // LISTADO JUEGOS FILTRADO POR GENERO
-<<<<<<< HEAD
-            	var genero = listarPorGenero();
-            	mostrarLista(juegosServicio.listarPorGenero(genero));    	
-=======
-            	
-
->>>>>>> 77cb7b616135a7d0cd4a7f2885cb22de97311382
-                break;
- 
-            case 8:
             	// LISTADO JUEGOS FILTRADOS POR SIGLO
-            	listarPorSigloXX();
-            	
-
+            	listarPorSigloXX();       
                 break;
-
+                
+            case 8:
+                // LISTADO JUEGOS FILTRADO POR GENERO
+				var genero = listarPorGenero();
+				mostrarLista(juegosServicio.listarPorGenero(genero));
+				break;
+ 
             case 0:
                 continuar = false;
                 break;
@@ -184,6 +177,5 @@ public class JuegosControlador {
         	n = LeeDatos.leerInt();
     	}while(n <= 0 || n > TipoGenero.values().length);
     	return TipoGenero.values()[n-1];
-    
-
+	}
 }
