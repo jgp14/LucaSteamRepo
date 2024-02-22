@@ -157,7 +157,7 @@ public class DAOJuegosImp implements DAOJuegos {
 	public List<Juego> listarPorSigloXX() throws JuegoException {
 		List<Juego> juegosSigloXX = new ArrayList<Juego>();
 		for (int i = 0; i < juegos.size(); i++) {
-			if (juegos.get(i).getFecha() < 2000) {
+			if (juegos.get(i).getFecha() < 2000 && juegos.get(i).getFecha()>1899) {
 				juegosSigloXX.add(juegos.get(i));
 			}
 		}
