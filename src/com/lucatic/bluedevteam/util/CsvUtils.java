@@ -40,7 +40,6 @@ public class CsvUtils {
 	 *                      fichero o si ocurre un error procesando los datos del
 	 *                      fichero.
 	 */
-
 	public static List<Juego> deCsvAList(String fichero) throws CsvException {
 
 		List<Juego> lista = new ArrayList<>();
