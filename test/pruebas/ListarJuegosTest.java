@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ListarJuegosTest {
 
-    private JuegosServicio servicio = new JuegosServicioImpl();
+    private final JuegosServicio servicio = new JuegosServicioImpl();
 
     @Test
     public void listarJuegosSinCargarDatos() {

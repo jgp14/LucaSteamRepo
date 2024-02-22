@@ -88,6 +88,7 @@ public class DAOJuegosImpl implements DAOJuegos {
                 }
                 LOGGER.info("Juegos, Editores, Plataformas cargados correctamente");
             } catch (CsvException e) {
+                LOGGER.error("Error en Dao al cargar datos");
                 throw e;
             }
             count++;
@@ -126,9 +127,12 @@ public class DAOJuegosImpl implements DAOJuegos {
                 juegosPorGenero.add(juegos.get(i));
             }
         }
+
         if (juegos.size() == 0) {
+            LOGGER.warn("No hay juegos disponibles");
             throw new JuegoException("No hay juegos en la base");
         } else if (juegosPorGenero.size() == 0) {
+            LOGGER.warn("No hay juegos con ese genero");
             throw new JuegoException("No hay juegos en ese genero");
         }
         return juegosPorGenero;
@@ -151,7 +155,8 @@ public class DAOJuegosImpl implements DAOJuegos {
 
     public List<Juego> listarPorPlataforma(String nombrePlataforma) throws JuegoException {
 
-        List<Juego> listaPorPlataforma = new ArrayList<Juego>();
+        List<Juego> listaPorPlataforma = new ArrayList<>();
+
         for (int i = 0; i < juegos.size(); i++) {
             if (juegos.get(i).getPlataforma().equalsIgnoreCase(nombrePlataforma)) {
                 listaPorPlataforma.add(juegos.get(i));
@@ -170,7 +175,7 @@ public class DAOJuegosImpl implements DAOJuegos {
     }
 
     public List<Juego> listarPorSigloXX() throws JuegoException {
-        List<Juego> juegosSigloXX = new ArrayList<Juego>();
+        List<Juego> juegosSigloXX = new ArrayList<>();
         for (int i = 0; i < juegos.size(); i++) {
             if (juegos.get(i).getFecha() <= 2000 && juegos.get(i).getFecha() > 1900) {
                 juegosSigloXX.add(juegos.get(i));

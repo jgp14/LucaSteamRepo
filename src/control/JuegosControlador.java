@@ -144,7 +144,7 @@ public class JuegosControlador {
         juegos.forEach(System.out::println);
     }
 
-    public String listarPlataformas() throws JuegoException {
+    public String listarPlataformas() {
 
         Set<String> plataformas = juegosServicio.getListaPlataformas().getPlataformas();
         List<String> plataformasList = new ArrayList<>(plataformas);
@@ -153,7 +153,7 @@ public class JuegosControlador {
         for (int i = 0; i < plataformasList.size(); i++) {
             System.out.println((i + 1) + " - " + plataformasList.get(i));
         }
-        int n = 0;
+        int n;
         do {
             System.out.print("Dime codigo de plataforma: ");
             n = LeeDatos.leerInt();
@@ -164,16 +164,17 @@ public class JuegosControlador {
 
     public void listarPorSigloXX() throws JuegoException {
         List<Juego> juegosSigloXX = juegosServicio.listarPorSigloXX();
-        for (int i = 0; i < juegosSigloXX.size(); i++) {
-            System.out.println(juegosSigloXX.get(i));
+
+        for (Juego sigloXX : juegosSigloXX) {
+            System.out.println(sigloXX);
         }
     }
 
-    public TipoGenero listarPorGenero() throws JuegoException {
+    public TipoGenero listarPorGenero() {
         for (int i = 0; i < TipoGenero.values().length; i++) {
             System.out.println((i + 1) + " - " + TipoGenero.values()[i]);
         }
-        int n = 0;
+        int n;
         do {
             System.out.print("Dime el codigo de genero de videojuego: ");
             n = LeeDatos.leerInt();

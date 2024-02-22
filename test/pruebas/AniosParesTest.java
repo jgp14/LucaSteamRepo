@@ -37,7 +37,7 @@ public class AniosParesTest {
 
         try {
             cargarDatos();
-            assertTrue(juegosServicio.listarPorAnhosPares().size() > 0);
+            assertTrue(!juegosServicio.listarPorAnhosPares().isEmpty());
         } catch (JuegoException e) {
             throw new RuntimeException(e);
         }
