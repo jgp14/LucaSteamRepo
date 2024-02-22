@@ -1,7 +1,6 @@
 package pruebas;
 
 import excepciones.CsvException;
-import excepciones.JuegoException;
 import org.junit.jupiter.api.Test;
 import servicios.JuegosServicio;
 import servicios.JuegosServicioImpl;
