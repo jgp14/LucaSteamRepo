@@ -19,7 +19,6 @@ import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class JuegosControlador {
 
@@ -83,7 +82,7 @@ public class JuegosControlador {
 			String plataforma = listarPlataformas();
 			juegosServicio.listarPorPlataforma(plataforma).forEach(System.out::println);
 			break;
-			
+
 		case 6:
 			// LISTADO JUEGOS FILTRADO POR GENERO PLATAFORMA
 			mostrarLista(juegosServicio.listarGeneroPorPlataforma());
