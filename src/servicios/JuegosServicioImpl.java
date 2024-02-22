@@ -4,6 +4,8 @@ import java.util.List;
 
 import datos.DAOJuegos;
 import datos.DAOJuegosImp;
+import datos.ListaEditor;
+import datos.ListaPlataforma;
 import excepciones.CsvException;
 import excepciones.JuegoException;
 import model.Juego;
@@ -56,4 +58,19 @@ public class JuegosServicioImpl implements JuegosServicio {
 		}
 	}
 
+	@Override
+	public ListaPlataforma getPlataformas() {
+
+		return daoJuegos.getListaPlataforma();
+	}
+
+	public List<Juego> listarPorPlataforma(String nombrePlataforma) throws JuegoException {
+
+		return daoJuegos.listarPorPlataforma(nombrePlataforma);
+	}
+
+	@Override
+	public ListaEditor getListaEditores() {
+		return daoJuegos.getListaEditor();
+	}
 }
