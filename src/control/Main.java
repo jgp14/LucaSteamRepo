@@ -1,10 +1,12 @@
 package control;
 
 public class Main {
+	/**
+	 * @author BlueDevTeam
+	 */
+	public static void main(String[] args) {
 
-    public static void main(String[] args) {
+		new JuegosControlador().inicio();
 
-        new JuegosControlador().inicio();
-
-    }
+	}
 }
