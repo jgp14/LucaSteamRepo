@@ -3,7 +3,6 @@ package datos;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import excepciones.CsvException;
 import model.Juego;
 import model.TipoGenero;
@@ -134,11 +133,12 @@ public class DAOJuegosImp implements DAOJuegos {
 			throw new JuegoException(msg);
 		}
 	}
-	public List<Juego> listarPorPlataforma(String nombrePlataforma)throws JuegoException{
+
+	public List<Juego> listarPorPlataforma(String nombrePlataforma) throws JuegoException {
 
 		List<Juego> listaPorPlataforma = new ArrayList<Juego>();
-		for(int i=0;i<juegos.size();i++) {
-			if(juegos.get(i).getPlataforma().equalsIgnoreCase(nombrePlataforma)) {
+		for (int i = 0; i < juegos.size(); i++) {
+			if (juegos.get(i).getPlataforma().equalsIgnoreCase(nombrePlataforma)) {
 				listaPorPlataforma.add(juegos.get(i));
 			}
 		}
@@ -151,5 +151,6 @@ public class DAOJuegosImp implements DAOJuegos {
 			LOGGER.warn(msg);
 			throw new JuegoException(msg);
 		}
+		return listaPorPlataforma;
 	}
 }
