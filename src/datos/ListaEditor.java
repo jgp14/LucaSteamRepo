@@ -23,6 +23,10 @@ public class ListaEditor {
 		this.editores = editores;
 	}
 
+	public int sizeEditores() {
+		return editores.size();
+	}
+
 	@Override
 	public String toString() {
 		return "ListaEditor{" +
