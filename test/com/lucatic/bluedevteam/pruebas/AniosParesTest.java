@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @since 22/02/2024
  * @author BlueDevTeam
- * @version 1.0.0
+ * @version 1.0.0.
  */
 public class AniosParesTest {
 
