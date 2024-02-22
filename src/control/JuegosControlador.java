@@ -78,8 +78,8 @@ public class JuegosControlador {
                 
             case 5:
                 // LISTADO JUEGOS FILTRADO POR PLATAFORMAS(CONSOLAS)
-               	String genero = listarPlataformas();
-                juegosServicio.listarPorPlataforma(genero).forEach(System.out::println);
+               	String plataforma = listarPlataformas();
+                juegosServicio.listarPorPlataforma(plataforma).forEach(System.out::println);
 
                 break;
 
@@ -90,10 +90,10 @@ public class JuegosControlador {
 
             case 7:
                 // LISTADO JUEGOS FILTRADO POR GENERO
-
+            	var genero = listarPorGenero();
+            	mostrarLista(juegosServicio.listarPorGenero(genero));    	
                 break;
  
-            
             case 8:
 
                 break;
@@ -142,7 +142,7 @@ public class JuegosControlador {
         juegos.forEach(System.out::println);
     }
     
-    public String listarPlataformas() {
+    public String listarPlataformas() throws JuegoException{
 
     	Set<String> plataformas = juegosServicio.getListaPlataformas().getPlataformas();
     	List<String> plataformasList = new ArrayList<>(plataformas);
@@ -152,7 +152,6 @@ public class JuegosControlador {
     		System.out.println((i+1)+" - "+plataformasList.get(i));
     	}
     	int n = 0;
-
     	do {
     		System.out.print("Dime codigo de plataforma: ");
         	n = LeeDatos.leerInt();
@@ -160,9 +159,21 @@ public class JuegosControlador {
 
     	return plataformasList.get(n-1);
     }
+//    
+//    public listarPorSigloXX() throws JuegoException{
+//    	juegosServicio.listarPorSigloXX().forEach(System.out::println);
+//    }
     
-    public listarPorSigloXX() {
-    	juegosServicio.listarPorSigloXX().forEach(System.out::println);
+    public TipoGenero listarPorGenero() throws JuegoException{
+    	for(int i = 0; i < TipoGenero.values().length; i++) {
+    		System.out.println((i+1)+" - "+TipoGenero.values()[i]);
+    	}
+    	int n = 0;
+    	do {
+    		System.out.print("Dime el codigo de genero de videojuego: ");
+        	n = LeeDatos.leerInt();
+    	}while(n <= 0 || n > TipoGenero.values().length);
+    	return TipoGenero.values()[n-1];
     }
 
 }
