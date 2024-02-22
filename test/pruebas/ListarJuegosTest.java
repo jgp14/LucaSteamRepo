@@ -23,7 +23,7 @@ public class ListarJuegosTest {
     @Test
     public void listarJuegosCargarDatos() {
 
-        List<Juego> juegos = null;
+        List<Juego> juegos;
         try {
             servicio.cargarDatos("vgsales.csv");
             juegos = servicio.listarJuegos();

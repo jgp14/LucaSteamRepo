@@ -11,24 +11,24 @@ import model.TipoGenero;
 
 public interface JuegosServicio {
 
-	void cargarDatos(String nombreFichero) throws CsvException;
+    void cargarDatos(String nombreFichero) throws CsvException;
 
-	void altaJuego(Juego juego) throws JuegoException;
+    void altaJuego(Juego juego) throws JuegoException;
 
-	List<Juego> listarJuegos() throws JuegoException;
+    List<Juego> listarJuegos() throws JuegoException;
 
-	List<Juego> listarGeneroPorPlataforma() throws JuegoException;
+    List<Juego> listarGeneroPorPlataforma() throws JuegoException;
 
-	List<Juego> listarPorGenero(TipoGenero tipoGenero) throws JuegoException;
+    List<Juego> listarPorGenero(TipoGenero tipoGenero) throws JuegoException;
 
-	ListaPlataforma getListaPlataformas();
+    ListaPlataforma getListaPlataformas();
 
-	List<Juego> listarPorPlataforma(String nombrePlataforma) throws JuegoException;
+    List<Juego> listarPorPlataforma(String nombrePlataforma) throws JuegoException;
 
-	ListaEditor getListaEditores();
+    ListaEditor getListaEditores();
 
-	List<Juego> listarPorSigloXX() throws JuegoException;
-	
-	List<Juego> listarPorAnhosPares() throws JuegoException;
-	
+    List<Juego> listarPorSigloXX() throws JuegoException;
+
+    List<Juego> listarPorAnhosPares() throws JuegoException;
+
 }
