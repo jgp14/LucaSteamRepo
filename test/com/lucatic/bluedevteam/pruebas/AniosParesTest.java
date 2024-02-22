@@ -8,7 +8,7 @@ import com.lucatic.bluedevteam.servicios.JuegosServicioImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-**
+/**
 * Pruebas unitarias para evaluar el comportamiento de JuegosServicioImpl al listar juegos según los años pares.
 * 
 * @since 22/02/2024

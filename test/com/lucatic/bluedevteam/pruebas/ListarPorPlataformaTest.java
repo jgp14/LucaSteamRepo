@@ -82,7 +82,7 @@ class ListarPorPlataformaTest {
 	}
 
 	/**
-	 * Test para
+	 * Test para listar por plataforma sin cargar datos
 	 */
 	@Test
 	public void listarPorPlataformaSinCargar() {
