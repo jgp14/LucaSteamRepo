@@ -10,7 +10,6 @@ import org.apache.logging.log4j.Logger;
 import com.lucatic.bluedevteam.datos.ListaEditor;
 import com.lucatic.bluedevteam.servicios.JuegosServicio;
 import com.lucatic.bluedevteam.servicios.JuegosServicioImpl;
-import com.lucatic.bluedevteam.util.LeeDatos;
 
 import com.lucatic.bluedevteam.vista.Menu;
 
@@ -56,7 +55,7 @@ public class JuegosControlador {
 
         boolean continuar = true;
 
-        switch (LeeDatos.leerInt()) {
+        switch (util.LeeDatos.leerInt()) {
 
             case 1:
                 juegosServicio.cargarDatos("vgsales.csv");
