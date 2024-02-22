@@ -4,6 +4,8 @@ import com.lucatic.bluedevteam.excepciones.JuegoException;
 import com.lucatic.bluedevteam.model.Juego;
 import com.lucatic.bluedevteam.model.TipoGenero;
 
+
+import com.lucatic.bluedevteam.util.LeeDatos;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -55,7 +57,7 @@ public class JuegosControlador {
 
         boolean continuar = true;
 
-        switch (util.LeeDatos.leerInt()) {
+        switch (LeeDatos.leerInt()) {
 
             case 1:
                 juegosServicio.cargarDatos("vgsales.csv");
