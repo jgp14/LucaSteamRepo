@@ -24,7 +24,7 @@ public class DAOJuegosImpl implements DAOJuegos {
     /**
      * Atributo que gestiona la carga de datos
      */
-    private static int count = 0;
+    private int count = 0;
 
     /**
      * Atributo que gestiona los logs producidos en la clase
